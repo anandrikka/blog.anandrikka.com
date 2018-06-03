@@ -1,0 +1,46 @@
+{
+  "name": "ARikka-Blog",
+  "description": "Personal Blog",
+  "version": "1.0.0",
+  "author": "Anand Reddy Rikka <appsbyanand@gmail.com>",
+  "dependencies": {
+    "@material-ui/core": "^1.1.0",
+    "@material-ui/icons": "^1.1.0",
+    "babel-plugin-dynamic-import-webpack": "^1.0.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "gatsby": "^1.9.247",
+    "gatsby-image": "^1.0.51",
+    "gatsby-link": "^1.6.40",
+    "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-remark-images": "^1.5.65",
+    "gatsby-remark-prismjs": "^2.0.3",
+    "gatsby-source-filesystem": "^1.5.38",
+    "gatsby-transformer-remark": "^1.7.41",
+    "gatsby-transformer-sharp": "^1.6.26",
+    "lodash": "^4.17.10",
+    "prismjs": "^1.14.0",
+    "react": "^16.4.0",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "^16.4.0",
+    "react-helmet": "^5.2.0",
+    "react-popper": "^0.10.4",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write 'src/**/*.js'"
+  },
+  "devDependencies": {
+    "prettier": "^1.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anandrikka/blog.anandrikka.com.git"
+  }
+}
