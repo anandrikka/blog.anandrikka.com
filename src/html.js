@@ -1,9 +1,12 @@
+import es6Promise from 'es6-promise';
 import React, { Component } from 'react';
 
+es6Promise();
+
 let styles;
-if (process.env.NODE_ENV === `production`) {
+if (process.env.NODE_ENV === 'production') {
   try {
-    styles = require(`!raw-loader!../public/styles.css`);
+    styles = require('!raw-loader!../public/styles.css');
   } catch (e) {
     console.log(e);
   }

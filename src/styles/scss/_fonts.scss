@@ -1,0 +1,119 @@
+@font-face {
+  font-family: $app-font;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/#{$app-font}/#{$app-font}-regular.eot'); /* IE9 Compat Modes */
+  src: local('#{$app-font} Regular'), local('#{$app-font}-Regular'),
+  url('../fonts/#{$app-font}/#{$app-font}-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/#{$app-font}/#{$app-font}-regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/#{$app-font}/#{$app-font}-regular.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/#{$app-font}/#{$app-font}-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/#{$app-font}/#{$app-font}-regular.svg') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: $app-font;
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/#{$app-font}/#{$app-font}-italic.eot');
+  src: local('#{$app-font} Italic'), local('#{$app-font}-Italic'),
+  url('../fonts/#{$app-font}/#{$app-font}-italic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/#{$app-font}/#{$app-font}-italic.woff2') format('woff2'),
+  url('../fonts/#{$app-font}/#{$app-font}-italic.woff') format('woff'),
+  url('../fonts/#{$app-font}/#{$app-font}-italic.ttf') format('truetype'),
+  url('../fonts/#{$app-font}/#{$app-font}-italic.svg') format('svg');
+}
+
+@font-face {
+  font-family: #{$app-font};
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/#{$app-font}/#{$app-font}-600.eot');
+  src: local('#{$app-font} Bold'), local('#{$app-font}-Bold'),
+  url('../fonts/#{$app-font}/#{$app-font}-600.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/#{$app-font}/#{$app-font}-600.woff2') format('woff2'),
+  url('../fonts/#{$app-font}/#{$app-font}-600.woff') format('woff'),
+  url('../fonts/#{$app-font}/#{$app-font}-600.ttf') format('truetype'),
+  url('../fonts/#{$app-font}/#{$app-font}-600.svg') format('svg');
+}
+
+@font-face {
+  font-family: $app-font;
+  font-style: italic;
+  font-weight: 600;
+  src: url('../fonts/#{$app-font}/#{$app-font}-600-italic.eot');
+  src: local('#{$app-font} Bold Italic'), local('#{$app-font}-Bold-Italic'),
+  url('../fonts/#{$app-font}/#{$app-font}-600-italic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/#{$app-font}/#{$app-font}-600-italic.woff2') format('woff2'),
+  url('../fonts/#{$app-font}/#{$app-font}-600-italic.woff') format('woff'),
+  url('../fonts/#{$app-font}/#{$app-font}-600-italic.ttf') format('truetype'),
+  url('../fonts/#{$app-font}/#{$app-font}-600-italic.svg') format('svg');
+}
+
+@font-face {
+  font-family: #{$app-font};
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/#{$app-font}/#{$app-font}-300.eot');
+  src: local('#{$app-font} Light'), local('#{$app-font}-Light'),
+  url('../fonts/#{$app-font}/#{$app-font}-300.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/#{$app-font}/#{$app-font}-300.woff2') format('woff2'),
+  url('../fonts/#{$app-font}/#{$app-font}-300.woff') format('woff'),
+  url('../fonts/#{$app-font}/#{$app-font}-300.ttf') format('truetype'),
+  url('../fonts/#{$app-font}/#{$app-font}-300.svg') format('svg');
+}
+
+@font-face {
+  font-family: $app-font;
+  font-style: italic;
+  font-weight: 300;
+  src: url('../fonts/#{$app-font}/#{$app-font}-300-italic.eot');
+  src: local('#{$app-font} Light Italic'), local('#{$app-font}-Light-Italic'),
+  url('../fonts/#{$app-font}/#{$app-font}-300-italic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/#{$app-font}/#{$app-font}-300-italic.woff2') format('woff2'),
+  url('../fonts/#{$app-font}/#{$app-font}-300-italic.woff') format('woff'),
+  url('../fonts/#{$app-font}/#{$app-font}-300-italic.ttf') format('truetype'),
+  url('../fonts/#{$app-font}/#{$app-font}-300-italic.svg') format('svg');
+}
+
+@font-face {
+  font-family: $header-font;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/#{$header-font}/#{$header-font}-regular.eot');
+  src: local('#{$header-font} Regular'), local('#{$header-font}-Regular'),
+  url('../fonts/#{$header-font}/#{$header-font}-regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/#{$header-font}/#{$header-font}-regular.woff2') format('woff2'),
+  url('../fonts/#{$header-font}/#{$header-font}-regular.woff') format('woff'),
+  url('../fonts/#{$header-font}/#{$header-font}-regular.ttf') format('truetype'),
+  url('../fonts/#{$header-font}/#{$header-font}-regular.svg') format('svg');
+}
+
+@font-face {
+  font-family: $header-font;
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/#{$header-font}/#{$header-font}-700.eot');
+  src: local('#{$header-font} Bold'), local('#{$header-font}-Bold'),
+  url('../fonts/#{$header-font}/#{$header-font}-700.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/#{$header-font}/#{$header-font}-700.woff2') format('woff2'),
+  url('../fonts/#{$header-font}/#{$header-font}-700.woff') format('woff'),
+  url('../fonts/#{$header-font}/#{$header-font}-700.ttf') format('truetype'),
+  url('../fonts/#{$header-font}/#{$header-font}-700.svg') format('svg');
+}
+
+@font-face {
+  font-family: $code-font;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/#{$code-font}/#{$code-font}.eot');
+  src: local('#{$code-font} Regular'), local('#{$code-font}-Regular'),
+  url('../fonts/#{$code-font}/#{$code-font}.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/#{$code-font}/#{$code-font}.woff2') format('woff2'),
+  url('../fonts/#{$code-font}/#{$code-font}.woff') format('woff'),
+  url('../fonts/#{$code-font}/#{$code-font}.ttf') format('truetype'),
+  url('../fonts/#{$code-font}/#{$code-font}.svg') format('svg');
+}
+
+
+

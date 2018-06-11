@@ -1,0 +1,37 @@
+$app-font: 'Montserrat';
+$header-font: 'Lora';
+$code-font: 'Fira-Mono';
+
+// Typography
+
+$font-color: rgba(0, 0, 0, 0.87) !default;
+
+$font-family-sans-serif: $app-font, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif: $header-font, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-monospace: $code-font, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
+$font-size-base: 1rem !default;
+$font-size-lg: ($font-size-base * 1.25) !default;
+$font-size-sm: ($font-size-base * 0.875) !default;
+
+$font-weight-normal: 400 !default;
+$font-weight-600: 600 !default;
+
+$h1-font-size: ($font-size-base * 2.8125) !default;
+$h2-font-size: ($font-size-base * 2.125) !default;
+$h3-font-size: ($font-size-base * 1.75) !default;
+$h4-font-size: ($font-size-base * 1.5) !default;
+$h5-font-size: ($font-size-base * 1.3125) !default;
+$h6-font-size: $font-size-base !default;
+
+$headings-margin-bottom: (1rem / 2) !default;
+$headings-font-family: $font-family-serif !default;
+$headings-font-weight: $font-weight-normal !default;
+$headings-line-height: 1.2 !default;
+$headings-color: rgba(0, 0, 0, 0.9) !default;
+
+$small-font-size: 80% !default;
+
+$lead-font-size:              ($font-size-base * 1.25) !default;
+$lead-font-weight:            300 !default;

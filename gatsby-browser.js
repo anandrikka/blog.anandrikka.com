@@ -1,7 +1,24 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import React from 'react';
+import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 
- // You can delete this file if you're not using it
+import createStore from './src/store';
+
+exports.onInitialClientRender = function() {
+  const styles = window.document.getElementById('server-side-jss');
+  styles && styles.parentNode.removeChild(styles);
+}
+
+exports.replaceRouterComponent = ({ history }) => {
+  const store = createStore();
+  const ConnectedRouterWrapper = ({ children }) => (
+    <Provider store={store}>
+      <Router history={history}>{children}</Router>
+    </Provider>
+  );
+  ConnectedRouterWrapper.propTypes = {
+    children: PropTypes.object.isRequired,
+  };
+  return ConnectedRouterWrapper;
+}

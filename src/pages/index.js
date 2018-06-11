@@ -1,32 +1,95 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import injectSheet from 'react-jss';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardMedia';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 
-const IndexPage = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges;
-  console.log(posts)
+import javascriptPng from '../assets/img/javascript.png';
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  blogSummary: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    cursor: 'pointer'
+  },
+  details: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  cover: {
+    minWidth: 60,
+    height: 60,
+    margin: 8,
+    [`${theme.breakpoints.down('sm')}`]: {
+      minWidth: 50,
+      height: 50
+    },
+    [`${theme.breakpoints.between('sm, md')}`]: {
+      minWidth: 60,
+      height: 60
+    },
+    [`${theme.breakpoints.up('md')}`]: {
+      minWidth: 75,
+      height: 75
+    }
+  }
+});
+
+const IndexPage = ({ data, classes, ...props }) => {
+  const posts = data.posts.edges;
   return (
-    <div>
-      {posts.map((post) => {
-        return <Link to={post.node.fields.slug} key={post.id}>{post.node.frontmatter.title}</Link>
-      })}
+    <div className={classes.root}>
+      {posts.map((post, index) => (
+        <Grid container spacing={16}>
+          <Grid item xs={12} key={`posts_${index}`}>
+            <Card
+              elevation={0}
+              className={classes.blogSummary}
+              raised={false}
+            >
+              <div className={classes.details}>
+                <CardContent>
+                  <Typography variant="headline" gutterBottom>{post.node.frontmatter.title}</Typography>
+                  <Typography variant="caption" color="secondaryText" gutterBottom>{post.node.frontmatter.date}</Typography>
+                  <Typography component="p">{post.node.excerpt}</Typography>
+                </CardContent>
+              </div>
+              <CardMedia
+                image={javascriptPng}
+                className={classes.cover}
+              />
+            </Card>
+          </Grid>
+        </Grid>
+      ))}
     </div>
   );
 };
 
-export default IndexPage
+export default injectSheet(styles)(IndexPage);
 
 export const allPosts = graphql`
   query allPosts {
-    allMarkdownRemark {
+    posts: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+      totalCount
       edges {
         node {
           id
+          excerpt
           timeToRead
           frontmatter {
+            date
             title
             categories
             tags
-            parent
           }
           fields {
             slug
