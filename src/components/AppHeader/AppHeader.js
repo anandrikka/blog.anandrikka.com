@@ -11,6 +11,7 @@ const styles = theme => ({
   root: {
     boxShadow: 'none',
     display: 'flex',
+    background: '#ffffff',
     [`${theme.breakpoints.up('md')}`]: {
       display: 'none'
     }

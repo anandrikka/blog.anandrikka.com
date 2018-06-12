@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import javascriptPng from '../assets/img/javascript.png';
 
 const styles = theme => ({
-  root: {
+  indexRoot: {
     flexGrow: 1,
   },
   blogSummary: {
@@ -46,10 +46,10 @@ const styles = theme => ({
 const IndexPage = ({ data, classes, ...props }) => {
   const posts = data.posts.edges;
   return (
-    <div className={classes.root}>
+    <div className={classes.indexRoot}>
       {posts.map((post, index) => (
-        <Grid container spacing={16}>
-          <Grid item xs={12} key={`posts_${index}`}>
+        <Grid container spacing={16} key={`posts_${index}`}>
+          <Grid item xs={12}>
             <Card
               elevation={0}
               className={classes.blogSummary}
@@ -57,8 +57,8 @@ const IndexPage = ({ data, classes, ...props }) => {
             >
               <div className={classes.details}>
                 <CardContent>
-                  <Typography variant="headline" gutterBottom>{post.node.frontmatter.title}</Typography>
-                  <Typography variant="caption" color="secondaryText" gutterBottom>{post.node.frontmatter.date}</Typography>
+                  <Typography variant="headline" component="h5" gutterBottom>{post.node.frontmatter.title}</Typography>
+                  <Typography variant="caption" gutterBottom>{post.node.frontmatter.date}</Typography>
                   <Typography component="p">{post.node.excerpt}</Typography>
                 </CardContent>
               </div>
