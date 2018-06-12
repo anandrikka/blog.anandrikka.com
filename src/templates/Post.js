@@ -26,10 +26,10 @@ export default function PostTemplate({ data }) {
     <div>
       <h1>{title}</h1>
       <div dangerouslySetInnerHTML={{__html: html}} />
-      {categories.map((c, index) => (
+      {(categories || []).map((c, index) => (
         <span key={`post_category_${index}`}>{c}</span>
       ))}
-      {tags.map((c, index) => (
+      {(tags || []).map((c, index) => (
         <span key={`post_category_${index}`}>{c}</span>
       ))}
       <p>Total Words: {words}</p>
