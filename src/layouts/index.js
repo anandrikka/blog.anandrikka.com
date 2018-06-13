@@ -55,10 +55,10 @@ const styles = {
     }
   },
   routeContent: {
-    margin: 16,
-    [`${brakepoints.up('md')}`]: {
-      margin: 24
-    }
+    margin: '16px 16px 16px 16px',
+    // [`${brakepoints.up('md')}`]: {
+    //   margin: 24
+    // }
   }
 };
 

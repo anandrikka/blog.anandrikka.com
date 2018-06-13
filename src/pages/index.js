@@ -11,64 +11,98 @@ import Typography from '@material-ui/core/Typography';
 import javascriptPng from '../assets/img/javascript.png';
 
 const styles = theme => ({
-  indexRoot: {
-    flexGrow: 1,
-  },
-  blogSummary: {
+  root: {
     display: 'flex',
-    flexDirection: 'row-reverse',
-    cursor: 'pointer'
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'stretch'
   },
-  details: {
-    flexGrow: 1,
+  post: {
+    width: '100%',
+    maxWidth: '100%',
+    marginBottom: '1.5rem',
     display: 'flex',
-    flexDirection: 'column'
-  },
-  cover: {
-    minWidth: 60,
-    height: 60,
-    margin: 8,
-    [`${theme.breakpoints.down('sm')}`]: {
-      minWidth: 50,
-      height: 50
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    minHeight: '11em',
+    borderRadius: '10px',
+    overflow: 'hidden',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      transform: 'translate(0px, -2px)',
+      boxShadow: '0 15px 30px -10px rgba(10, 16, 34, .2)'
     },
-    [`${theme.breakpoints.between('sm, md')}`]: {
-      minWidth: 60,
-      height: 60
-    },
-    [`${theme.breakpoints.up('md')}`]: {
-      minWidth: 75,
-      height: 75
+    ['@media only screen and (max-width: 600px)']: {
+      flexDirection: 'column'
     }
+  },
+  postThumbnail: {
+    display: 'block',
+    flexGrow: 1,
+    width: '30%',
+    maxWidth: '100%',
+    minHeight: '11em',
+    backgroundSize: 'cover',
+    backgroundPosition: '50%, 50%',
+    ['@media only screen and (max-width: 600px)']: {
+      width: '100%'
+    }
+  },
+  postContent: {
+    width: '70%',
+    boxSizing: 'border-box',
+    ['@media only screen and (max-width: 600px)']: {
+      width: '100%'
+    }
+  },
+  title: {
+    color: 'rgba(0, 0, 0, 0.75)'
   }
 });
 
-const IndexPage = ({ data, classes, ...props }) => {
+const IndexPage = ({ data, classes, history }) => {
   const posts = data.posts.edges;
+  const gotoPost = (url) => {
+    history.push(url)
+  }
   return (
-    <div className={classes.indexRoot}>
+    <div className={classes.root}>
       {posts.map((post, index) => (
-        <Grid container spacing={16} key={`posts_${index}`}>
-          <Grid item xs={12}>
-            <Card
-              elevation={0}
-              className={classes.blogSummary}
-              raised={false}
+        <Card
+          elevation={1}
+          classes={{
+            root: classes.post
+          }}
+          key={`posts_${index}`}
+          onClick={() => gotoPost(post.node.fields.slug)}
+        >
+          <CardMedia
+            image={javascriptPng}
+            classes={{
+              root: classes.postThumbnail
+            }}
+          />
+          <CardContent
+            classes={{
+              root: classes.postContent
+            }}
+          >
+            <Typography
+              variant="headline"
+              component="h5"
+              gutterBottom
+              classes={{
+                root: classes.title
+              }}
             >
-              <div className={classes.details}>
-                <CardContent>
-                  <Typography variant="headline" component="h5" gutterBottom>{post.node.frontmatter.title}</Typography>
-                  <Typography variant="caption" gutterBottom>{post.node.frontmatter.date}</Typography>
-                  <Typography component="p">{post.node.excerpt}</Typography>
-                </CardContent>
-              </div>
-              <CardMedia
-                image={javascriptPng}
-                className={classes.cover}
-              />
-            </Card>
-          </Grid>
-        </Grid>
+              {post.node.frontmatter.title}
+            </Typography>
+            <Typography variant="caption" gutterBottom>
+              {new Date(post.node.fields.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} - {post.node.timeToRead} min read
+            </Typography>
+            <Typography varient="body2">{post.node.excerpt}</Typography>
+          </CardContent>
+        </Card>
       ))}
     </div>
   );
@@ -88,11 +122,10 @@ export const allPosts = graphql`
           frontmatter {
             date
             title
-            categories
-            tags
           }
           fields {
-            slug
+            slug,
+            date
           }
         }
       }
