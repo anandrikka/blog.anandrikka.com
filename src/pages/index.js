@@ -67,43 +67,48 @@ const IndexPage = ({ data, classes, history }) => {
   }
   return (
     <div className={classes.root}>
-      {posts.map((post, index) => (
-        <Card
-          elevation={1}
-          classes={{
-            root: classes.post
-          }}
-          key={`posts_${index}`}
-          onClick={() => gotoPost(post.node.fields.slug)}
-        >
-          <CardMedia
-            image={post.frontmatter.cover}
-            classes={{
-              root: classes.postThumbnail
-            }}
-          />
-          <CardContent
-            classes={{
-              root: classes.postContent
-            }}
-          >
-            <Typography
-              variant="headline"
-              component="h5"
-              gutterBottom
+      {
+        posts.map((post, index) => {
+          const postData = post.node;
+          return (
+            <Card
+              elevation={1}
               classes={{
-                root: classes.title
+                root: classes.post
               }}
+              key={`posts_${index}`}
+              onClick={() => gotoPost(postData.fields.slug)}
             >
-              {post.node.frontmatter.title}
-            </Typography>
-            <Typography variant="caption" gutterBottom>
-              {new Date(post.node.fields.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} - {post.node.timeToRead} min read
-            </Typography>
-            <Typography varient="body2">{post.node.excerpt}</Typography>
-          </CardContent>
-        </Card>
-      ))}
+              <CardMedia
+                image={postData.frontmatter.cover.publicURL}
+                classes={{
+                  root: classes.postThumbnail
+                }}
+              />
+              <CardContent
+                classes={{
+                  root: classes.postContent
+                }}
+              >
+                <Typography
+                  variant="headline"
+                  component="h5"
+                  gutterBottom
+                  classes={{
+                    root: classes.title
+                  }}
+                >
+                  {postData.frontmatter.title}
+                </Typography>
+                <Typography variant="caption" gutterBottom>
+                  {new Date(postData.fields.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} - {post.node.timeToRead} min read
+                </Typography>
+                <Typography varient="body2">{postData.excerpt}</Typography>
+              </CardContent>
+            </Card>
+          )
+        })
+      }
     </div>
   );
 };
@@ -122,6 +127,9 @@ export const allPosts = graphql`
           frontmatter {
             created
             title
+            cover {
+              publicURL
+            }
           }
           fields {
             slug,
