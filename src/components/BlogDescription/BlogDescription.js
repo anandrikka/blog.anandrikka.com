@@ -1,6 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import profileImg from '../../assets/img/profile.jpeg';
+// import { ReactComponent as GithubIcon } from "../../assets/img/social/github.svg";
 
 const styles = theme => ({
   wrapper: {
@@ -12,7 +13,13 @@ const styles = theme => ({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      padding: '20px 10px'
+      padding: '20px 10px',
+      [`${theme.breakpoints.up('lg')}`]: {
+        width: '300px',
+      },
+      [`${theme.breakpoints.up('xl')}`]: {
+        width: '500px',
+      }
     }
   },
   about: {
@@ -139,7 +146,7 @@ class Profile extends React.Component {
           <section className={classes.contact}>
             <div className="contactTitle">Contact Me</div>
             <ul>
-              <li>1</li>
+              {/* <li><GithubIcon /></li> */}
               <li>1</li>
               <li>1</li>
             </ul>

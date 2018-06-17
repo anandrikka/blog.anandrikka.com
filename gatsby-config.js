@@ -30,6 +30,7 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           'gatsby-plugin-sharp',
+          // 'gatsby-remark-autolink-headers', // Provides autolink for all the headers
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -52,6 +53,12 @@ module.exports = {
             }
           }
         ]
+      }
+    },
+    {
+      resolve: "gatsby-plugin-nprogress",
+      options: {
+        color: "#c62828"
       }
     }
   ],

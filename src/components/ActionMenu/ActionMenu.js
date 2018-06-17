@@ -26,7 +26,7 @@ const styles = theme => ({
       flexDirection: 'column',
       left: 'auto',
       height: '100%',
-      width: '60px',
+      width: '50px',
       '&::before': {
         position: 'absolute',
         content: '""',
@@ -52,18 +52,18 @@ class ActionMenu extends React.Component {
     return (
       <div className={classes.wrapper}>
         <div className={classes.iconGroup}>
-          <IconButton>
+          <IconButton color="primary">
             <HomeIcon/>
           </IconButton>
-          <IconButton>
+          <IconButton color="primary">
             <SearchIcon/>
           </IconButton>
         </div>
         <div className={classes.iconGroup}>
-          <IconButton>
+          <IconButton color="primary">
             <FullScreen/>
           </IconButton>
-          <IconButton>
+          <IconButton color="primary">
             <ArrowUpwardIcon/>
           </IconButton>
         </div>

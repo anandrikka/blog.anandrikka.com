@@ -63,7 +63,7 @@ const styles = theme => ({
 const IndexPage = ({ data, classes, history }) => {
   const posts = data.posts.edges;
   const gotoPost = (url) => {
-    history.push(url)
+    history.push(`/posts/${url}`)
   }
   return (
     <div className={classes.root}>
@@ -112,7 +112,7 @@ export default injectSheet(styles)(IndexPage);
 
 export const allPosts = graphql`
   query allPosts {
-    posts: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    posts: allMarkdownRemark(sort: {fields: [frontmatter___created], order: DESC}) {
       totalCount
       edges {
         node {
@@ -120,7 +120,7 @@ export const allPosts = graphql`
           excerpt
           timeToRead
           frontmatter {
-            date
+            created
             title
           }
           fields {

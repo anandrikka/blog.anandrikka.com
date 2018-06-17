@@ -74,7 +74,7 @@ const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
       ]}
     />
     <div className={classes.container}>
-      <AppHeader/>
+      <AppHeader />
       <div className={classes.pageContent}>
         <BlogDescription />
         <div className={classes.route}>

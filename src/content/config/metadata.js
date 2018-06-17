@@ -1,4 +1,6 @@
 module.exports = {
+  prefixUrl: '',
+  disqusShortname: 'blog-anandrikka-com',
   siteMetadata: {
     title: 'Beginner\'s Blog',
     url: 'https://blog.anandrikka.com',

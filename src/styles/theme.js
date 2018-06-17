@@ -37,9 +37,9 @@ const theme = {
     },
     type: 'light',
     primary: {
-      light: '#90A4AE',
-      main: '#607D8B',
-      dark: '#455A64',
+      light: '#BA68C8',
+      main: '#9C27B0',
+      dark: '#7B1FA2',
       contrastText: '#fff'
     },
     secondary: {
