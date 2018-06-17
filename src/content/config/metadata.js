@@ -1,5 +1,5 @@
 module.exports = {
-  prefixUrl: '',
+  prefixPath: '',
   disqusShortname: 'blog-anandrikka-com',
   siteMetadata: {
     title: 'Beginner\'s Blog',

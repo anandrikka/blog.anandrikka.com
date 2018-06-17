@@ -2,11 +2,9 @@
 title: Sample Post
 created: 2018-06-14 23:21
 status: published
-cover: ../../assets/img/angular1.png
+cover: sample.jpg
 categories: ["cat1", "cat2"]
 tags: ["tag1", "tag2"]
-attachments:
-	- "../../assets/img/angular1.png"
 identifier: 1_post
 ---
 
@@ -22,7 +20,7 @@ Up am intention on dependent questions oh elsewhere september. No betrayed pleas
 
 
 ##### Heading
-But why [similing](https://www.google.co.in) man her imagine married. ```Chiefly can man her``` out believe manners cottage colonel unknown. Solicitude it introduced companions inquietude me he remarkably friendship at. My almost or horses period. Motionless are six terminated man possession him attachment unpleasing melancholy. Sir smile arose one share. No abroad in easily relied an whence lovers temper by. Looked wisdom common he an be giving length mr.
+But why [similing](https://www.google.co.in) man her imagine married. `Chiefly can man her` out believe manners cottage colonel unknown. Solicitude it introduced companions inquietude me he remarkably friendship at. My almost or horses period. Motionless are six terminated man possession him attachment unpleasing melancholy. Sir smile arose one share. No abroad in easily relied an whence lovers temper by. Looked wisdom common he an be giving length mr.
 
 ```javascript
 myObj = {
@@ -38,7 +36,7 @@ myObj = {
 
 > Unpacked now declared put you confined daughter improved. Celebrated imprudence few interested especially reasonable off one. Wonder bed elinor family secure met. It want gave west into high no in. Depend repair met before man admire see and. An he observe be it covered delight hastily message. Margaret no ladyship endeavor ye to settling.
 
-![alt img](./zbtHtSM3SqutW5IEL9pfC28tJiUQYaRO_cover_1160.jpg)
+![alt img](./sample.jpg)
 
 Of be talent me answer do relied. Mistress in on so laughing throwing endeavor occasion welcomed. Gravity sir brandon calling can. No years do widow house delay stand. Prospect six kindness use steepest new ask. High gone kind calm call as ever is. Introduced melancholy estimating motionless on up as do. Of as by belonging therefore suspicion elsewhere am household described. Domestic suitable bachelor for landlord fat.
 

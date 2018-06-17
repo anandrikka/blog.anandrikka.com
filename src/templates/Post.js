@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import Typography from '@material-ui/core/Typography';
 import rehypeReact from 'rehype-react';
-// import AppLink from '../components/Link';
 import moment from 'moment';
+
 import DisqusComments from '../components/Disqus';
+import Seo from '../components/Seo';
+// import AppLink from '../components/Link';
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -33,9 +35,9 @@ const styles = theme => ({
 });
 
 const PostTemplate = ({ data, classes }) => {
-  console.log('Data: ', data)
   const {
     markdownRemark: {
+      excerpt,
       htmlAst,
       wordCount: {
         words
@@ -44,16 +46,28 @@ const PostTemplate = ({ data, classes }) => {
       frontmatter: {
         title,
         created,
-        identifier
+        identifier,
+        cover: {
+          publicURL
+        },
+        description
       },
       fields: {
         slug
       }
     },
   } = data;
-  console.log(identifier)
+  const seoData = {
+    title,
+    slug,
+    cover: publicURL,
+    excerpt,
+    description
+  }
+  console.log('seoData: ', seoData);
   return (
     <article className={classes.article}>
+      <Seo node={seoData} post />
       <div className={classes.pageContent}>
         <header>
           <Typography variant="display1" gutterBottom>
@@ -99,6 +113,7 @@ export default injectSheet(styles)(PostTemplate);
 export const postQuery = graphql`
   query PostByPath($slug: String!) {
 		markdownRemark(fields: { slug: { eq: $slug } }) {
+      excerpt
 			htmlAst
 			wordCount {
 				words
@@ -108,6 +123,9 @@ export const postQuery = graphql`
         title
         created
         identifier
+        cover {
+          publicURL
+        }
       }
       fields {
         slug

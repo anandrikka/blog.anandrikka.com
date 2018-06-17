@@ -77,7 +77,7 @@ const IndexPage = ({ data, classes, history }) => {
           onClick={() => gotoPost(post.node.fields.slug)}
         >
           <CardMedia
-            image={javascriptPng}
+            image={post.frontmatter.cover}
             classes={{
               root: classes.postThumbnail
             }}

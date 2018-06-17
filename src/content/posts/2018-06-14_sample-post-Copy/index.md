@@ -2,12 +2,10 @@
 title: Sample Post
 created: 2018-06-14 23:21
 status: published
-cover: ../../assets/img/angular1.png
+cover: sample.jpg
 categories: ["cat1", "cat2"]
 tags: ["tag1", "tag2"]
 identifier: 2_post
-attachments:
-	- "../../assets/img/angular1.png"
 ---
 
 ## Heading2
