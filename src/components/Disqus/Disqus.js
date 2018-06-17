@@ -36,10 +36,12 @@ class DisqusComments extends React.Component {
 
   render() {
     const { identifier, title, url } = this.props;
-    window.disqus_shortname = SHORT_NAME;
-    window.disqus_identifier = identifier;
-    window.disqus_title = title;
-    window.disqus_url = WEBSITE_URL + url;
+    if (window) {
+      window.disqus_shortname = SHORT_NAME;
+      window.disqus_identifier = identifier;
+      window.disqus_title = title;
+      window.disqus_url = WEBSITE_URL + url;
+    }
     return (
       <div id="disqus_thread" />
     )
