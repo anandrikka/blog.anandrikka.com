@@ -150,22 +150,28 @@ module.exports = {
               }));
             } ,
             query: `
-            allMarkdownRemark(limit: 1000, sort: { order: DESC, fields: [frontmatter___date] }) {
-              edges {
-                node {
-                  excerpt
-                  html
-                  timeToRead
-                  fields { slug }
-                  frontmatter {
-                    title
-                    cover
-                    created
-                    tags
+             {
+              allMarkdownRemark(limit: 1000, sort:{ order: DESC, fields: [frontmatter___created]} ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    timeToRead
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      cover {
+                        size
+                      }
+                      created
+                      tags
+                    }
                   }
                 }
-              }
-            }
+              } 
+             }
             `,
             output: '/rss.xml'
           }
