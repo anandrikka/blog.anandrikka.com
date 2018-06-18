@@ -68,7 +68,6 @@ const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
       title={siteMetadata.title}
       meta={[
         { name: 'description', content: siteMetadata.description },
-        { name: 'keywords', content: siteMetadata.keywords.join(', ') },
         { name: 'author', content: siteMetadata.author },
         { name: 'url', content: siteMetadata.url }
       ]}

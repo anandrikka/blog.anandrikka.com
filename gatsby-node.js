@@ -21,7 +21,7 @@ const addSiblingNodes = (createNodeField) => {
     createNodeField({
       node,
       name: 'next',
-      value: {
+      value: i === totalPosts-1 ? null: {
         title: nxtNode.frontmatter.title,
         slug: nxtNode.fields.slug
       }
@@ -29,7 +29,7 @@ const addSiblingNodes = (createNodeField) => {
     createNodeField({
       node,
       name: 'prev',
-      value: {
+      value: i ===0 ? null :{
         title: prevNode.frontmatter.title,
         slug: prevNode.fields.slug
       }

@@ -50,7 +50,8 @@ const PostTemplate = ({ data, classes }) => {
         cover: {
           publicURL
         },
-        description
+        description,
+        tags
       },
       fields: {
         slug
@@ -62,7 +63,8 @@ const PostTemplate = ({ data, classes }) => {
     slug,
     cover: publicURL,
     excerpt,
-    description
+    description,
+    tags
   }
   console.log('seoData: ', seoData);
   return (
@@ -74,7 +76,7 @@ const PostTemplate = ({ data, classes }) => {
             {title}
           </Typography>
           <Typography variant="caption">
-            {moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')}
+            {moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')} - {`${timeToRead} min Read`}
           </Typography>
         </header>
         {renderAst(htmlAst)}
@@ -126,6 +128,7 @@ export const postQuery = graphql`
         cover {
           publicURL
         }
+        tags
       }
       fields {
         slug

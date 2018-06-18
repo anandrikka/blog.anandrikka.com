@@ -1,6 +1,6 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import profileImg from '../../assets/img/profile.jpeg';
+import profileImg from '../../assets/img/covers/profile.jpeg';
 // import { ReactComponent as GithubIcon } from "../../assets/img/social/github.svg";
 
 const styles = theme => ({

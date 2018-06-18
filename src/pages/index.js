@@ -7,8 +7,7 @@ import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardMedia';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-
-import javascriptPng from '../assets/img/javascript.png';
+import Img from 'gatsby-image';
 
 const styles = theme => ({
   root: {
@@ -37,16 +36,26 @@ const styles = theme => ({
     }
   },
   postThumbnail: {
-    display: 'block',
-    flexGrow: 1,
-    width: '30%',
     maxWidth: '100%',
     minHeight: '11em',
     backgroundSize: 'cover',
     backgroundPosition: '50%, 50%',
+    backgroundRepeat: 'no-repeat',
     ['@media only screen and (max-width: 600px)']: {
       width: '100%'
     }
+  },
+  thumbnailOuterWrapper: {
+    width: '30%',
+    maxWidth: '100%',
+    minHeight: '11em',
+    flexGrow: 1,
+    ['@media only screen and (max-width: 600px)']: {
+      width: '100%'
+    }
+  },
+  thumbnailInnerWrapper: {
+    position: 'static !important'
   },
   postContent: {
     width: '70%',
@@ -79,11 +88,10 @@ const IndexPage = ({ data, classes, history }) => {
               key={`posts_${index}`}
               onClick={() => gotoPost(postData.fields.slug)}
             >
-              <CardMedia
-                image={postData.frontmatter.cover.publicURL}
-                classes={{
-                  root: classes.postThumbnail
-                }}
+              <Img
+                sizes={postData.frontmatter.cover.childImageSharp.sizes}
+                className={classes.thumbnailInnerWrapper}
+                outerWrapperClassName={classes.thumbnailOuterWrapper}
               />
               <CardContent
                 classes={{
@@ -129,6 +137,11 @@ export const allPosts = graphql`
             title
             cover {
               publicURL
+              childImageSharp {
+                sizes {
+                  ...GatsbyImageSharpSizes
+                }
+              }
             }
           }
           fields {
