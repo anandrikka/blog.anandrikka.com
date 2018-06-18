@@ -3,6 +3,7 @@ module.exports = {
   disqusShortname: 'blog-anandrikka-com',
   siteMetadata: {
     title: 'Beginner\'s Blog',
+    siteUrl: 'https://blog.anandrikka.com',
     url: 'https://blog.anandrikka.com',
     author: 'Anand Reddy Rikka',
     email: 'appsbyanand@gmail.com',
