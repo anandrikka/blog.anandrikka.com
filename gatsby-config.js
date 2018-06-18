@@ -89,26 +89,26 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        output: '/sitemap.xml',
-        query: `
-        {
-          site {
-            siteMetadata {
-              url
-            }
-          }
-          allSitePage(filter: { path: { regex: "${regexExcludeRobots}" } }) {
-            edges {
-              node {
-                path
-              }
-            }
-          }
-        }
-      `
-      }
+      resolve: 'gatsby-plugin-sitemap'
+      // options: {
+      //   output: '/sitemap.xml',
+      //   query: `
+      //   {
+      //     site {
+      //       siteMetadata {
+      //         url
+      //       }
+      //     }
+      //     allSitePage(filter: { path: { regex: "${regexExcludeRobots}" } }) {
+      //       edges {
+      //         node {
+      //           path
+      //         }
+      //       }
+      //     }
+      //   }
+      // `
+      // }
     },
     'gatsby-plugin-offline',
     {
