@@ -48,7 +48,7 @@ const styles = theme => ({
   thumbnailOuterWrapper: {
     width: '30%',
     maxWidth: '100%',
-    minHeight: '11em',
+    maxHeight: '11em',
     flexGrow: 1,
     ['@media only screen and (max-width: 600px)']: {
       width: '100%'

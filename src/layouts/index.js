@@ -83,7 +83,7 @@ const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
             </div>
           </Scrollbar>
         </div>
-        <ActionMenu />
+        {/*<ActionMenu />*/}
       </div>
     </div>
   </MuiThemeProvider>

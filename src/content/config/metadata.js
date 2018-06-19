@@ -11,9 +11,9 @@ module.exports = {
     keywords: ['Anand', 'Rikka', 'Anand Reddy Rikka', 'ARikka'],
     description: 'A blog for sharing all tips learned in programming....',
     social: [
-      { name: 'twitter', url: 'https://twitter.com/anandrikka' },
-      { name: 'linkedin', url: 'https://www.linkedin.com/in/anandrikka' },
-      { name: 'github', url: 'https://github.com/anandrikka' }
+      { name: 'twitter', url: 'https://twitter.com/anandrikka', icon: 'fa fa-twitter' },
+      { name: 'linkedin', url: 'https://www.linkedin.com/in/anandrikka', icon: 'fa fa-linkedin' },
+      { name: 'github', url: 'https://github.com/anandrikka', icon: 'fa fa-github' }
     ],
     manifest: {
       name: '',

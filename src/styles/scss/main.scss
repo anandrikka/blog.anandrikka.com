@@ -2,6 +2,8 @@
 @import '_variables.scss';
 @import '_fonts.scss';
 @import '_typography.scss';
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome.scss';
 
 *:after,
 *:before {
@@ -58,4 +60,13 @@ a {
 
 a:hover {
   background-color: #e0d6eb;
+}
+
+.gatsby-resp-image-link {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+a.gatsby-resp-image-link:hover {
+  background-color: transparent !important;
 }

@@ -52,18 +52,18 @@ class ActionMenu extends React.Component {
     return (
       <div className={classes.wrapper}>
         <div className={classes.iconGroup}>
-          <IconButton color="primary">
+          <IconButton>
             <HomeIcon/>
           </IconButton>
-          <IconButton color="primary">
+          <IconButton>
             <SearchIcon/>
           </IconButton>
         </div>
         <div className={classes.iconGroup}>
-          <IconButton color="primary">
+          <IconButton>
             <FullScreen/>
           </IconButton>
-          <IconButton color="primary">
+          <IconButton>
             <ArrowUpwardIcon/>
           </IconButton>
         </div>
