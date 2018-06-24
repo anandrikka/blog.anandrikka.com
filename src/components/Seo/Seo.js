@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import config from '../../content/config/metadata';
+import config from '../../../content/config/metadata';
 
 const Seo = ({ node, post:isPost }) => {
 	const {

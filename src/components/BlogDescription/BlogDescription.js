@@ -12,8 +12,10 @@ import PersonIcon from '@material-ui/icons/Person';
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 
+import Menu from '../Menu';
+
 import profileImg from '../../assets/img/covers/profile.jpeg';
-import metadata from '../../content/config/metadata';
+import metadata from '../../../content/config/metadata';
 import styles from './styles';
 
 class Profile extends React.Component {
@@ -38,44 +40,7 @@ class Profile extends React.Component {
           </div>
         </header>
         <div className={classes.sidebarMenu}>
-          <List component="nav">
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
-              <ListItemText primary="Search" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <BookmarkIcon />
-              </ListItemIcon>
-              <ListItemText primary="Categories" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <FlagIcon />
-              </ListItemIcon>
-              <ListItemText primary="Tags" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <ArchiveIcon />
-              </ListItemIcon>
-              <ListItemText primary="Archives" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <RssIcon />
-              </ListItemIcon>
-              <ListItemText primary="Rss Feed" />
-            </ListItem>
-          </List>
+          <Menu />
         </div>
         <footer>
           {/*<section className={classes.contact}>

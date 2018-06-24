@@ -1,11 +1,10 @@
 import React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
-import PropTypes from 'prop-types';
 import { SpringSystem, MathUtil } from 'rebound';
 import { forceCheck } from 'react-lazyload';
 import { connect } from 'react-redux';
 
-import { setScrollToTop } from "../../../store";
+import { setScrollToTop } from '../../../store';
 
 class Scrollbar extends React.Component {
 

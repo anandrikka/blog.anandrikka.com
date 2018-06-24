@@ -41,6 +41,7 @@
     "react-lazyload": "^2.3.0",
     "react-popper": "^0.10.4",
     "react-redux": "^5.0.7",
+    "react-share": "^2.2.0",
     "rebound": "^0.1.0",
     "redux": "^4.0.0",
     "rehype-react": "^3.0.2",

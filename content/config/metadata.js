@@ -22,4 +22,15 @@ module.exports = {
       display: ''
     }
   },
+  footer: {
+    text: '2018 &copy; Anand Reddy Rikka'
+  },
+  menu: [
+    { url: '/', title: 'Home', icon: 'home' },
+    { url: '/search', title: 'Search', icon: 'search' },
+    { url: '/categories', title: 'Categories', icon: 'bookmark'},
+    { url: '/tags', title: 'Tags', icon: 'flag' },
+    { url: '/archives', title: 'Archives', icon: 'archive' },
+    { url: '/rss', title: 'Rss', icon: 'rss' },
+  ]
 };

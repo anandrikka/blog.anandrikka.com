@@ -1,14 +1,20 @@
 import { createStore, applyMiddleware } from 'redux';
 
 const SET_SCROLL_TO_TOP = 'SET_SCROLL_TO_TOP';
+const TOGGLE_MENU = 'TOGGLE_MENU';
 
 export const setScrollToTop = flag => ({
   type: SET_SCROLL_TO_TOP,
   payload: flag,
 });
 
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU,
+})
+
 const initialState = {
   scrollToTop: false,
+  toggleMenu: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -17,6 +23,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         scrollToTop: action.payload,
+      }
+    case TOGGLE_MENU:
+      return {
+        ...state,
+        toggleMenu: !state.toggleMenu
       }
   }
   return state;

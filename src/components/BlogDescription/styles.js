@@ -128,13 +128,13 @@ export default theme => ({
       verticalAlign: 'top',
       display: 'flex',
       flexDirection: 'column',
-      marginBottom: '20px',
-      padding: 16,
       listStyleType: 'none',
       '& li': {
         marginBottom: 16,
-
-      }
+      },
+      // [`${theme.breakpoints.down('lg')}`]: {
+      //   marginBottom: 20
+      // }
     }
   }
 });

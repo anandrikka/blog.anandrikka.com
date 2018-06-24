@@ -88,6 +88,10 @@ exports.createPages = ({
         allMarkdownRemark {
           edges {
             node {
+              frontmatter {
+                categories
+                tags
+              }
               fields {
                 slug
               }
@@ -102,8 +106,7 @@ exports.createPages = ({
     }
     const posts = result.data.allMarkdownRemark.edges;
     posts.forEach(({ node }) => {
-      const { fields: { slug } } = node
-      console.log(slug)
+      const { fields: { slug } } = node;
       createPage({
         path: `posts/${slug}`,
         component: pageTemplate,
@@ -114,42 +117,40 @@ exports.createPages = ({
     });
 
     // Tags
-    // let tags = [];
-    // _.each(posts, edge => {
-    //   if (_.get(edge, 'node.frontmatter.tags')) {
-    //     tags = tags.concat(edge.node.frontmatter.tags);
-    //   }
-    // });
-    // tags = _.uniq(tags);
-    // tags.forEach(tag => {
-    //   createPage({
-    //     path: `tags/${_.kebabCase(tag)}/`,
-    //     component: tagTemplate,
-    //     tag,
-    //     context: {
-    //       tag,
-    //     },
-    //   });
-    // });
+    let tags = [];
+    _.each(posts, edge => {
+      if (_.get(edge, 'node.frontmatter.tags')) {
+        tags = tags.concat(edge.node.frontmatter.tags);
+      }
+    });
+    tags = _.uniq(tags);
+    tags.forEach(tag => {
+      createPage({
+        path: `tags/${_.kebabCase(tag)}/`,
+        component: tagTemplate,
+        context: {
+          tag,
+        },
+      });
+    });
 
     // Categories
-    // let categories = [];
-    // _.each(posts, edge => {
-    //   if (_.get(edge, 'node.frontmatter.categories')) {
-    //     categories = categories.concat(edge.node.frontmatter.categories)
-    //   }
-    // });
-    // categories = _.uniq(categories);
-    // categories.forEach(category => {
-    //   createPage({
-    //     path: `/categories/${_.kebabCase(category)}/`,
-    //     component: categoryTemplate,
-    //     category,
-    //     context: {
-    //       category,
-    //     },
-    //   });
-    // });
+    let categories = [];
+    _.each(posts, edge => {
+      if (_.get(edge, 'node.frontmatter.categories')) {
+        categories = categories.concat(edge.node.frontmatter.categories)
+      }
+    });
+    categories = _.uniq(categories);
+    categories.forEach(category => {
+      createPage({
+        path: `/categories/${_.kebabCase(category)}/`,
+        component: categoryTemplate,
+        context: {
+          category,
+        },
+      });
+    });
   });
 };
 

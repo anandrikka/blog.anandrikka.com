@@ -1,4 +1,4 @@
-const config = require('./src/content/config/metadata');
+const config = require('./content/config/metadata');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -22,7 +22,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/content/posts/`,
+        path: `${__dirname}/content/posts/`,
         name: 'posts'
       }
     },
@@ -38,6 +38,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/assets/img/`,
         name: 'images'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/assets/`,
+        name: 'content-images'
       }
     },
     {

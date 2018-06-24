@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import config from '../../content/config/metadata';
+import config from '../../../content/config/metadata';
 
 const SHORT_NAME = config.disqusShortname
 const WEBSITE_URL = config.siteMetadata.url

@@ -7,8 +7,9 @@ import injectSheet from 'react-jss';
 
 import Scrollbar from '../components/common/Scrollbar';
 import AppHeader from '../components/AppHeader';
-import ActionMenu from '../components/ActionMenu';
+import Footer from '../components/Footer';
 import BlogDescription from '../components/BlogDescription';
+import NavigationDrawer from '../components/NavigationDrawer';
 
 import theme from '../styles/theme';
 import 'prismjs/themes/prism-okaidia.css';
@@ -42,20 +43,20 @@ const styles = {
     }
   },
   route: {
-    height: 'calc(100vh - 114px)',
+    height: 'calc(100vh - 104px)',
     ['@media (max-width:600px)']: {
-      height: `calc(100vh - 106px)`,
+      height: `calc(100vh - 96px)`,
     },
     [`${brakepoints.up('md')}`]: {
       flexGrow: 1,
       height: '100vh',
     },
     ['@media (min-width:0px) and (orientiation: landscape)']: {
-      height: 'calc(100vh - 98px)'
+      height: 'calc(100vh - 88px)'
     }
   },
   routeContent: {
-    margin: '16px 16px 16px 16px',
+    margin: '16px',
     // [`${brakepoints.up('md')}`]: {
     //   margin: 24
     // }
@@ -74,6 +75,7 @@ const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
     />
     <div className={classes.container}>
       <AppHeader />
+      <NavigationDrawer />
       <div className={classes.pageContent}>
         <BlogDescription />
         <div className={classes.route}>
@@ -83,7 +85,7 @@ const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
             </div>
           </Scrollbar>
         </div>
-        {/*<ActionMenu />*/}
+        <Footer />
       </div>
     </div>
   </MuiThemeProvider>

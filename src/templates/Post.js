@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import CardHeader from '@material-ui/core/CardHeader';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
 import rehypeReact from 'rehype-react';
 import moment from 'moment';
 
+import SocialShare from '../components/SocialShare';
 import DisqusComments from '../components/Disqus';
 import Seo from '../components/Seo';
 // import AppLink from '../components/Link';
@@ -19,29 +24,36 @@ const renderAst = new rehypeReact({
 const styles = theme => ({
   article: {
     boxSizing: 'border-box',
-    boxShadow: theme.shadows[1],
+    //boxShadow: theme.shadows[1],
     backgroundColor: theme.palette.common.white,
     padding: 20,
     ['@media screen and (max-width: 600px)']: {
       padding: 15
-    },
-    '& header': {
-      textAlign: 'center'
     }
   },
   pageContent: {
 
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  secondaryTitle: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  subheader: {
+    fontSize: '0.75rem'
   }
 });
 
-const PostTemplate = ({ data, classes }) => {
+const PostTemplate = ({ data, classes, history }) => {
+  const onTagSelect = (tag) => {
+    history.push(`/tags/${tag}`);
+  }
   const {
     markdownRemark: {
       excerpt,
       htmlAst,
-      wordCount: {
-        words
-      },
       timeToRead,
       frontmatter: {
         title,
@@ -51,7 +63,8 @@ const PostTemplate = ({ data, classes }) => {
           publicURL
         },
         description,
-        tags
+        tags,
+        categories = []
       },
       fields: {
         slug
@@ -64,26 +77,66 @@ const PostTemplate = ({ data, classes }) => {
     cover: publicURL,
     excerpt,
     description,
-    tags
+    tags,
+    categories
   }
-  console.log('seoData: ', seoData);
   return (
     <article className={classes.article}>
       <Seo node={seoData} post />
       <div className={classes.pageContent}>
         <header>
-          <Typography variant="display1" gutterBottom>
+          <Typography variant="display1" gutterBottom align="center">
             {title}
           </Typography>
-          <Typography variant="caption">
-            {moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')} - {`${timeToRead} min Read`}
-          </Typography>
+          <div className={classes.secondaryTitle}>
+            <CardHeader
+              classes={{
+                subheader: classes.subheader
+              }}
+              avatar={
+                <Avatar aria-label="Recipe" className={classes.avatar}>
+                  <i className="fa fa-calendar-o"></i>
+                </Avatar>
+              }
+              title={moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')}
+              subheader={`${timeToRead} min Read`}
+            />
+            <CardHeader
+              classes={{
+                subheader: classes.subheader
+              }}
+              avatar={
+                <Avatar aria-label="Recipe" className={classes.avatar}>
+                  <i className="fa fa-folder-open-o"></i>
+                </Avatar>
+              }
+              title="Category"
+              subheader={categories.join(', ')}
+            />
+          </div>
         </header>
         {renderAst(htmlAst)}
         {/*<div dangerouslySetInnerHTML={{__html: html}} />*/}
-        <p>Total Words: {words}</p>
-        <p>Time to Read: {timeToRead}</p>
       </div>
+      <div>
+        {
+          tags.map((tag, index) => (
+            <Button
+              variant="outlined"
+              size="small"
+              color="secondary"
+              className={classes.button}
+              onClick={onTagSelect}
+            >
+              {`#${tag}`}
+            </Button>
+          ))
+        }
+      </div>
+      <SocialShare
+        node={data.markdownRemark}
+        path={slug}
+      />
       <DisqusComments
         identifier={identifier}
         title={title}
@@ -129,6 +182,7 @@ export const postQuery = graphql`
           publicURL
         }
         tags
+        categories
       }
       fields {
         slug
