@@ -88,32 +88,12 @@ const PostTemplate = ({ data, classes, history }) => {
           <Typography variant="display1" gutterBottom align="center">
             {title}
           </Typography>
-          <div className={classes.secondaryTitle}>
-            <CardHeader
-              classes={{
-                subheader: classes.subheader
-              }}
-              avatar={
-                <Avatar aria-label="Recipe" className={classes.avatar}>
-                  <i className="fa fa-calendar-o"></i>
-                </Avatar>
-              }
-              title={moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')}
-              subheader={`${timeToRead} min Read`}
-            />
-            <CardHeader
-              classes={{
-                subheader: classes.subheader
-              }}
-              avatar={
-                <Avatar aria-label="Recipe" className={classes.avatar}>
-                  <i className="fa fa-folder-open-o"></i>
-                </Avatar>
-              }
-              title="Category"
-              subheader={categories.join(', ')}
-            />
-          </div>
+          <Typography variant="caption" align="center" gutterBottom>
+            {moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')} - {`${timeToRead} min Read`}
+          </Typography>
+          <Typography variant="caption" align="center">
+            <i className="fa fa-bookmark" style={{padding: '0 10px'}}></i>{categories.join(', ')}
+          </Typography>
         </header>
         {renderAst(htmlAst)}
         {/*<div dangerouslySetInnerHTML={{__html: html}} />*/}
@@ -127,6 +107,7 @@ const PostTemplate = ({ data, classes, history }) => {
               color="secondary"
               className={classes.button}
               onClick={onTagSelect}
+              key={`tag_${index}`}
             >
               {`#${tag}`}
             </Button>

@@ -11,42 +11,49 @@ import ArchiveIcon from '@material-ui/icons/Archive';
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import Hidden from '@material-ui/core/Hidden';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { toggleMenu as menuToggle } from "../../store";
 
 const styles = theme => ({
 
 });
 
-const Menu = ({ classes, history }) => {
-  console.log(history);
+const Menu = ({ classes, history, menuSwitch }) => {
+  const gotoPage = (route) => {
+    menuSwitch();
+    history.push(route);
+  }
   return (
     <List>
-      <ListItem button>
+      <ListItem button onClick={() => gotoPage('/')}>
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>
         <ListItemText primary="Home" />
       </ListItem>
       <Hidden mdDown>
-        <ListItem button>
+        <ListItem button onClick={() => gotoPage('search')}>
           <ListItemIcon>
             <SearchIcon />
           </ListItemIcon>
           <ListItemText primary="Search" />
         </ListItem>
       </Hidden>
-      <ListItem button>
+      <ListItem button onClick={() => gotoPage('/categories')}>
         <ListItemIcon>
           <BookmarkIcon />
         </ListItemIcon>
         <ListItemText primary="Categories" />
       </ListItem>
-      <ListItem button>
+      <ListItem button onClick={() => gotoPage('/tags')}>
         <ListItemIcon>
           <FlagIcon />
         </ListItemIcon>
         <ListItemText primary="Tags" />
       </ListItem>
-      <ListItem button>
+      <ListItem button onClick={() => gotoPage('/archives')}>
         <ListItemIcon>
           <ArchiveIcon />
         </ListItemIcon>
@@ -62,4 +69,12 @@ const Menu = ({ classes, history }) => {
   )
 }
 
-export default injectSheet(styles)(Menu);
+const storeConnect = connect(
+  null,
+  dispatch => ({
+    menuSwitch: () => dispatch(menuToggle())
+  })
+);
+
+export default injectSheet(styles)(storeConnect(withRouter(Menu)));
+

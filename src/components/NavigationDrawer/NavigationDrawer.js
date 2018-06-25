@@ -14,6 +14,7 @@ import Divider from '@material-ui/core/Divider';
 import Hidden from '@material-ui/core/Hidden';
 import CardMedia from '@material-ui/core/CardMedia';
 import { connect } from 'react-redux';
+import Menu from '../Menu';
 
 import { toggleMenu as menuToggle } from "../../store";
 import appTheme from '../../styles/theme';
@@ -61,38 +62,7 @@ class NavigationDrawer extends React.Component {
             />
           </div>
           <Divider />
-          <List>
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <BookmarkIcon />
-              </ListItemIcon>
-              <ListItemText primary="Categories" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <FlagIcon />
-              </ListItemIcon>
-              <ListItemText primary="Tags" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <ArchiveIcon />
-              </ListItemIcon>
-              <ListItemText primary="Archives" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <RssIcon />
-              </ListItemIcon>
-              <ListItemText primary="Rss Feed" />
-            </ListItem>
-          </List>
+          <Menu />
         </Drawer>
       </Hidden>
     )
