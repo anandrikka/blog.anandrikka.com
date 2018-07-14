@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function CategoryTemplate({ data }) {
-  console.log('Category: ', data);
+export default function CategoryTemplate(props) {
   return (
     <div>Category</div>
   )
@@ -13,9 +12,9 @@ CategoryTemplate.propTypes = {
 };
 
 export const query = graphql`
-  query CategoryQuery($category: String!) {
+  query CategoryQuery($nodes: [String]) {
     allMarkdownRemark(
-      filter: { frontmatter: { categories: {eq: $category } }}
+      filter: { fields: { id: { in: $nodes } } },
       sort: { fields: [fields___date], order: DESC }
     ) {
       edges {
@@ -23,6 +22,10 @@ export const query = graphql`
           excerpt
           frontmatter {
             title
+            created
+          }
+          fields {
+            categoryPath
           }
         }
       }

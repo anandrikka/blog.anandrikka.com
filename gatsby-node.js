@@ -1,7 +1,7 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
+const { createPaginationPages } = require('gatsby-pagination');
 const _ = require('lodash');
-const webpackLodashPlugin = require('lodash-webpack-plugin');
 const moment = require('moment');
 
 const post_nodes = [];
@@ -52,16 +52,45 @@ exports.onCreateNode = ({
     const separatorIndex = ~slug.indexOf('_') ? slug.indexOf('_') + 1 : 0;
     const name = `${separatorIndex ? '/' : ''}${slug.substring(separatorIndex)}`
     const date = separatorIndex ? slug.substring(1, separatorIndex-1) : ''
+
+    // create path field
     createNodeField({
       node,
       name: 'slug',
       value: `${date.replace(/\-/g, '/')}${name}`
     })
+
+    // create id field
+    createNodeField({
+      node,
+      name: 'id',
+      value: [`${date.replace(/\-/g, '/')}${name}`]
+    })
+
+    // create date field
     createNodeField({
       node,
       name: 'date',
       value: date
     })
+
+    // create Tag paths field
+    const tagPaths = (node.frontmatter.tags || []).map(tag => `/tags/${_.kebabCase(tag)}`)
+    createNodeField({
+      node,
+      name: 'tagPaths',
+      value:tagPaths
+    })
+
+    // create Categories path field
+    const categoryPath = `/categories/${_.kebabCase(node.frontmatter.category)}`
+    createNodeField({
+      node,
+      name: 'categoryPath',
+      value: categoryPath
+    })
+
+    // add to a list to add prev & next to each post
     post_nodes.push(node);
   }
 };
@@ -79,6 +108,7 @@ exports.createPages = ({
   boundActionCreators,
 }) => {
   const { createPage } = boundActionCreators;
+  const indexPage = path.resolve('./src/templates/index.js');
   const pageTemplate = path.resolve('./src/templates/Post.js');
   const categoryTemplate = path.resolve('./src/templates/Category.js');
   const tagTemplate = path.resolve('./src/templates/Tag.js');
@@ -88,12 +118,30 @@ exports.createPages = ({
         allMarkdownRemark {
           edges {
             node {
+              id
+              excerpt
+              timeToRead
               frontmatter {
-                categories
-                tags
+                created
+                title
+                cover {
+                  publicURL
+                  childImageSharp {
+                    sizes {
+                      base64
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
+                    }
+                  }
+                }
               }
               fields {
-                slug
+                tagPaths
+                categoryPath
+                slug,
+                date
               }
             }
           }
@@ -104,8 +152,17 @@ exports.createPages = ({
     if (result.errors) {
       return Promise.reject(result.errors);
     }
-    const posts = result.data.allMarkdownRemark.edges;
-    posts.forEach(({ node }) => {
+    const edges = result.data.allMarkdownRemark.edges;
+
+    createPaginationPages({
+      edges,
+      createPage,
+      component: indexPage,
+      limit: 3
+    });
+
+    // Create Post page
+    edges.forEach(({ node }) => {
       const { fields: { slug } } = node;
       createPage({
         path: `posts/${slug}`,
@@ -116,15 +173,22 @@ exports.createPages = ({
       });
     });
 
-    // Tags
-    let tags = [];
-    _.each(posts, edge => {
+    // Extract Tags & Categories
+    let zTags = [];
+    let zCategories = [];
+    _.each(edges, edge => {
       if (_.get(edge, 'node.frontmatter.tags')) {
-        tags = tags.concat(edge.node.frontmatter.tags);
+        zTags = zTags.concat(edge.node.frontmatter.tags);
+      }
+      if (_.get(edge, 'node.frontmatter.category')) {
+        zCategories = zCategories.push(edge.node.frontmatter.category)
       }
     });
-    tags = _.uniq(tags);
-    tags.forEach(tag => {
+    zTags = _.uniq(zTags);
+    zCategories = _.uniq(zCategories);
+
+    // Create Tag page
+    zTags.forEach(tag => {
       createPage({
         path: `tags/${_.kebabCase(tag)}/`,
         component: tagTemplate,
@@ -134,15 +198,7 @@ exports.createPages = ({
       });
     });
 
-    // Categories
-    let categories = [];
-    _.each(posts, edge => {
-      if (_.get(edge, 'node.frontmatter.categories')) {
-        categories = categories.concat(edge.node.frontmatter.categories)
-      }
-    });
-    categories = _.uniq(categories);
-    categories.forEach(category => {
+    zCategories.forEach(category => {
       createPage({
         path: `/categories/${_.kebabCase(category)}/`,
         component: categoryTemplate,
@@ -151,6 +207,67 @@ exports.createPages = ({
         },
       });
     });
+
+    // Create Category page
+
+
+
+    // const categories = {};
+    //
+    // edges.forEach(({ node}) => {
+    //   const { categories: c = [], tags = [] } = node.frontmatter;
+    //   const id = node.fields.slug;
+    //   c.forEach((item) => {
+    //     if (!categories[item]) {
+    //       categories[item] = {
+    //         posts: [],
+    //         tags: []
+    //       }
+    //     }
+    //     const thisCategory = categories[item]
+    //     thisCategory.posts.push(id)
+    //     if (tags) {
+    //       tags.forEach((tag) => {
+    //         if (tag) {
+    //           if (!thisCategory.tags[tag]) {
+    //             thisCategory.tags[tag] = []
+    //           }
+    //           thisCategory.tags[tag].push(id)
+    //         }
+    //       })
+    //     }
+    //   })
+    // })
+    //
+    // Object.keys(categories).forEach((category) => {
+    //   const postIds = categories[category].posts
+    //   createPaginationPages({
+    //     createPage,
+    //     pathFrontmatter: path => `/${_.kebabCase(category)}/${path !== 1 ? '/' + path : '/'}`,
+    //     component: categoryTemplate,
+    //     limit: 1,
+    //     edges: postIds,
+    //     context: { category }
+    //   })
+    //
+    //   let allTags = [];
+    //   // For each of the tags in the post object, create a tag page.
+    //   Object.keys(categories[category].tags).forEach((tag) => {
+    //     allTags.push(tag);
+    //     const postIds = categories[category].tags[tag];
+    //     createPaginationPages({
+    //       createPage,
+    //       pathFormatter: path => `/${_.kebabCase(category)}/tags/${_.kebabCase(tag)}${path !== 1 ? '/' + path : '/'}`,
+    //       component: tagTemplate,
+    //       limit: 10,
+    //       edges: postIds,
+    //       context: {
+    //         category,
+    //         tag
+    //       }
+    //     });
+    //   })
+    // });
   });
 };
 

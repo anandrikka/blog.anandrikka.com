@@ -27,7 +27,10 @@ const styles = theme => ({
     alignItems: 'center',
     margin: '15px 0',
     '& div': {
-      margin: '5px 15px'
+      margin: '5px 5px',
+      [`${theme.breakpoints.up('md')}`]: {
+        margin: '5px 15px'
+      }
     },
     '& .share-count': {
       textAlign: 'center'
@@ -57,7 +60,7 @@ class SocialShare extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener(this.resizeListener);
+    window.removeEventListener('resize', this.resizeListener);
   }
 
   render() {

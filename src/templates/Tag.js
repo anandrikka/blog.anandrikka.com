@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import injectSheet from 'react-jss';
 
-export default function TagTemplate({ data }) {
-  console.log('Tags: ', data);
-  return (
-    <div>Tags</div>
-  )
+const styles = theme => ({
+
+});
+
+class TagTemplate extends React.Component {
+  render() {
+    return (
+      <div>Tags</div>
+    );
+  }
 }
 
 TagTemplate.propTypes = {
   data: PropTypes.object,
 };
+
+export default injectSheet(styles)(TagTemplate)
 
 export const query = graphql`
   query TagsQuery($tag: String!) {

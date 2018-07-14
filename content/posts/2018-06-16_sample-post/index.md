@@ -3,7 +3,7 @@ title: Sample Post
 created: 2018-06-16 23:21
 status: published
 cover: sample.jpg
-categories: ["cat1", "cat2"]
+category: "cat1"
 tags: ["tag1", "tag2"]
 identifier: 2_post
 ---

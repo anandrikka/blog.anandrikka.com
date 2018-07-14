@@ -2,13 +2,13 @@
 title: Sample Post
 created: 2018-06-16 23:22
 status: published
-cover: ../../../src/assets/img/covers/cloud.png
-categories: ["cat1", "cat2"]
+cover: ../../assets/covers/cloud.png
+category: "cat1"
 tags: ["tag1", "tag2"]
 identifier: 1_post
 ---
 
-![alt img](../../../src/assets/img/covers/cloud.png)
+![alt img](../../assets/covers/cloud.png)
 
 ## Heading2
 ### Heading3

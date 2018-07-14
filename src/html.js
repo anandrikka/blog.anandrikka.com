@@ -36,6 +36,7 @@ class HTML extends Component {
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="#D0E0D8" />
           <meta name="apple-mobile-web-app-title" content="Lazywill" />
+          <link href="/img/favicon.png" rel=icon />
         </head>
         <body {bodyAttributes}>
           <noscript>You need to enable JavaScript to run this app!</noscript>

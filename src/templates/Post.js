@@ -25,7 +25,7 @@ const styles = theme => ({
   article: {
     boxSizing: 'border-box',
     //boxShadow: theme.shadows[1],
-    backgroundColor: theme.palette.common.white,
+    //backgroundColor: theme.palette.common.white,
     padding: 20,
     ['@media screen and (max-width: 600px)']: {
       padding: 15
@@ -64,7 +64,7 @@ const PostTemplate = ({ data, classes, history }) => {
         },
         description,
         tags,
-        categories = []
+        category
       },
       fields: {
         slug
@@ -78,7 +78,7 @@ const PostTemplate = ({ data, classes, history }) => {
     excerpt,
     description,
     tags,
-    categories
+    category
   }
   return (
     <article className={classes.article}>
@@ -92,7 +92,7 @@ const PostTemplate = ({ data, classes, history }) => {
             {moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')} - {`${timeToRead} min Read`}
           </Typography>
           <Typography variant="caption" align="center">
-            <i className="fa fa-bookmark" style={{padding: '0 10px'}}></i>{categories.join(', ')}
+            <i className="fa fa-bookmark" style={{padding: '0 10px'}}></i>{category}
           </Typography>
         </header>
         {renderAst(htmlAst)}
@@ -163,7 +163,7 @@ export const postQuery = graphql`
           publicURL
         }
         tags
-        categories
+        category
       }
       fields {
         slug

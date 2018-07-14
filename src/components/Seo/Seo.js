@@ -33,6 +33,7 @@ const Seo = ({ node, post:isPost }) => {
 	image = `${siteMetadata.url}${config.prefixPath === "/" ? "" : config.prefixPath}${image}`
 	return (
 		<Helmet>
+			<title>{title}</title>
 			<meta name="description" content={description} />
 			<meta name="image" content={image} />
 			<meta name="keywords" content={keywords} />
@@ -45,11 +46,13 @@ const Seo = ({ node, post:isPost }) => {
 			<meta property="og:image" content={image} />
 
 			{/* Twitter Cards */}
-			<meta name="twitter:card" content={'summary_large_image'} />
-			<meta name="twitter:creator" content={''} />
+			<meta name="twitter:card" value="summary" />
+			<meta name="twitter:site" content={'siteMetadata.url'} />
 			<meta name="twitter:title" content={title} />
+			<meta name="twitter:creator" content="@anandrikka" />
 			<meta name="twitter:description" content={description} />
 			<meta name="twitter:image" content={image} />
+
 		</Helmet>
 	)
 }

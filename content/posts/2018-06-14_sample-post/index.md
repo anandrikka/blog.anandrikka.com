@@ -3,9 +3,7 @@ title: Sample Post
 created: 2018-06-14 23:21
 status: published
 cover: ../../assets/covers/java.png
-categories:
-  - Cat1
-  - Cat2
+category: "Cat A"
 tags:
  - Tag1
  - Tag2

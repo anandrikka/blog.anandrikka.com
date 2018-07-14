@@ -1,16 +1,5 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import FlagIcon from '@material-ui/icons/Flag';
-import RssIcon from '@material-ui/icons/RssFeed';
-import ArchiveIcon from '@material-ui/icons/Archive';
-import PersonIcon from '@material-ui/icons/Person';
-import HomeIcon from '@material-ui/icons/Home';
-import SearchIcon from '@material-ui/icons/Search';
 
 import Menu from '../Menu';
 
@@ -43,14 +32,6 @@ class Profile extends React.Component {
           <Menu />
         </div>
         <footer>
-          {/*<section className={classes.contact}>
-            <div className="contactTitle">Contact Me</div>
-            <ul>
-              {metadata.siteMetadata.social.map((item, index) => (
-                <li key={`social_${index}`} className="icon"><a className={item.icon} target="_blank" href={item.url}></a></li>
-              ))}
-            </ul>
-          </section>*/}
           <div className={classes.copyright}>
             2018 &copy; Anand Reddy Rikka
           </div>
