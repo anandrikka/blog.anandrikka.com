@@ -25,7 +25,6 @@ const PagiantedCards = ({
 	classes,
 	history
 }) => {
-	console.log('PaginatedCards: ', data);
 	const { group: nodes, index, pageCount, pathPrefix } = data;
   const hasPrev = index > 1
   const hasNext = index < pageCount
