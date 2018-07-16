@@ -59,7 +59,7 @@ const Menu = ({ classes, history, menuSwitch }) => {
         </ListItemIcon>
         <ListItemText primary="Archives" />
       </ListItem>
-      <ListItem button>
+      <ListItem button onClick={() => window.open('/rss.xml', '_blank')}>
         <ListItemIcon>
           <RssIcon />
         </ListItemIcon>

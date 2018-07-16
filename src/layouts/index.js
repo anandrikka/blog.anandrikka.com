@@ -58,7 +58,8 @@ const styles = {
   routeContent: {
     margin: '16px',
     padding: '16px',
-    backgroundColor: theme.palette.common.white
+    backgroundColor: theme.palette.common.white,
+    // height: 'calc(100% - 64px)'
     // [`${brakepoints.up('md')}`]: {
     //   margin: 24
     // }

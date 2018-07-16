@@ -47,7 +47,7 @@ const Seo = ({ node, post:isPost }) => {
 
 			{/* Twitter Cards */}
 			<meta name="twitter:card" value="summary" />
-			<meta name="twitter:site" content={'siteMetadata.url'} />
+			<meta name="twitter:site" content={siteMetadata.url} />
 			<meta name="twitter:title" content={title} />
 			<meta name="twitter:creator" content="@anandrikka" />
 			<meta name="twitter:description" content={description} />

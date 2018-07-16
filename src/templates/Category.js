@@ -1,35 +1,33 @@
 import React from 'react';
+import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 
-export default function CategoryTemplate(props) {
-  return (
-    <div>Category</div>
-  )
-}
+import PaginatedCards from '../components/PaginatedCards';
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'stretch'
+  }
+});
+
+const CategoryTemplate = ({
+  pageResources: {
+    json: {
+      pathContext
+    }
+  },
+  classes
+}) => (
+  <div className={classes.root}>
+    <PaginatedCards data={pathContext} />
+  </div>
+)
 
 CategoryTemplate.propTypes = {
-  data: PropTypes.object,
-};
+  pageResources: PropTypes.object
+}
 
-export const query = graphql`
-  query CategoryQuery($nodes: [String]) {
-    allMarkdownRemark(
-      filter: { fields: { id: { in: $nodes } } },
-      sort: { fields: [fields___date], order: DESC }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            created
-          }
-          fields {
-            categoryPath
-          }
-        }
-      }
-    }
-  }
-`;
-
+export default injectSheet(styles)(CategoryTemplate);

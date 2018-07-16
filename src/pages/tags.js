@@ -33,7 +33,7 @@ class Tags extends React.Component {
     return (
       <div className={classes.wrapper}>
         <SearchInput
-          placeholder="Search Categories"
+          placeholder="Search Tags"
         />
         <div>
           <div>

@@ -47,8 +47,8 @@ const styles = theme => ({
 });
 
 const PostTemplate = ({ data, classes, history }) => {
-  const onTagSelect = (tag) => {
-    history.push(`/tags/${tag}`);
+  const onTagSelect = (url) => {
+    history.push(url);
   }
   const {
     markdownRemark: {
@@ -67,7 +67,9 @@ const PostTemplate = ({ data, classes, history }) => {
         category
       },
       fields: {
-        slug
+        slug,
+        tagPaths,
+        categoryPath
       }
     },
   } = data;
@@ -92,7 +94,7 @@ const PostTemplate = ({ data, classes, history }) => {
             {moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')} - {`${timeToRead} min Read`}
           </Typography>
           <Typography variant="caption" align="center">
-            <i className="fa fa-bookmark" style={{padding: '0 10px'}}></i>{category}
+            <i className="fa fa-bookmark" style={{padding: '0 10px'}}></i>{categoryPath.name}
           </Typography>
         </header>
         {renderAst(htmlAst)}
@@ -100,16 +102,16 @@ const PostTemplate = ({ data, classes, history }) => {
       </div>
       <div>
         {
-          tags.map((tag, index) => (
+          tagPaths.map((tag, index) => (
             <Button
               variant="outlined"
               size="small"
               color="secondary"
               className={classes.button}
-              onClick={onTagSelect}
+              onClick={() => onTagSelect(tag.path)}
               key={`tag_${index}`}
             >
-              {`#${tag}`}
+              {`#${tag.name}`}
             </Button>
           ))
         }
@@ -167,6 +169,14 @@ export const postQuery = graphql`
       }
       fields {
         slug
+        tagPaths {
+          name
+          path
+        }
+        categoryPath {
+          name
+          path
+        }
       }
 		}
 	}
