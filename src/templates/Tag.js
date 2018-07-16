@@ -14,11 +14,7 @@ const styles = theme => ({
 });
 
 const TagTemplate = ({
-  pageResources: {
-    json: {
-      pathContext
-    }
-  },
+  pathContext,
   classes
 }) => (
   <div className={classes.root}>

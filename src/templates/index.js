@@ -14,12 +14,7 @@ const styles = theme => ({
 
 const IndexPage = ({
   classes,
-  history,
-  pageResources: {
-    json: {
-      pathContext
-    }
-  }
+  pathContext
 }) => (
   <div className={classes.root}>
     <PaginatedCards data={pathContext} />

@@ -78,7 +78,7 @@ exports.onCreateNode = ({
     // create Tag paths field
     const tagPaths = (node.frontmatter.tags || []).map(tag => ({
       name: tag,
-      path: `/tags/${_.kebabCase(tag)}`
+      path: `/tag/${_.kebabCase(tag)}`
     }))
     createNodeField({
       node,

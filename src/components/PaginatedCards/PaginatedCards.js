@@ -41,7 +41,12 @@ const PagiantedCards = ({
   }
 
   const loadPage = (url) => {
-    history.push(`/${url}`)
+    const prefix = url.substring(0, 1)
+    if (prefix === '/') {
+      history.push(url)
+    } else {
+      history.push(`/${url}`)
+    }
   }
 
   return (
