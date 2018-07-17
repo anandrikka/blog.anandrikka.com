@@ -9,7 +9,8 @@ const styles = theme => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    alignItems: 'stretch'
   },
   display1: {
     fontSize: '1rem',

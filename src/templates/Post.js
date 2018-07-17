@@ -23,6 +23,10 @@ const renderAst = new rehypeReact({
 
 const styles = theme => ({
   article: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'stretch',
     boxSizing: 'border-box',
     //boxShadow: theme.shadows[1],
     //backgroundColor: theme.palette.common.white,
