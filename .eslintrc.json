@@ -1,7 +1,18 @@
 {
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
   "extends": ["google", "prettier"],
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
+    "linebreak-style": "off",
+    "no-console": 1,
     "react/prefer-stateless-function": "off",
     "react/prop-types": "off",
     "react/no-danger": "off",

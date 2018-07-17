@@ -9,18 +9,21 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'stretch'
+    alignItems: 'stretch',
   }
 });
 
 const TagTemplate = ({
   pathContext,
   classes
-}) => (
-  <div className={classes.root}>
-    <PaginatedCards data={pathContext} />
-  </div>
-)
+}) => {
+  console.log('pathContext: ', pathContext)
+  return (
+    <div className={classes.root}>
+      <PaginatedCards data={pathContext} />
+    </div>
+  )
+}
 
 TagTemplate.propTypes = {
   data: PropTypes.object,

@@ -16,11 +16,14 @@ const styles = theme => ({
 const CategoryTemplate = ({
   pathContext,
   classes
-}) => (
-  <div className={classes.root}>
-    <PaginatedCards data={pathContext} />
-  </div>
-)
+}) => {
+  console.log('pathContext: ', pathContext);
+  return (
+    <div className={classes.root}>
+      <PaginatedCards data={pathContext} />
+    </div>
+  )
+}
 
 CategoryTemplate.propTypes = {
   pageResources: PropTypes.object

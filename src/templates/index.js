@@ -15,10 +15,13 @@ const styles = theme => ({
 const IndexPage = ({
   classes,
   pathContext
-}) => (
-  <div className={classes.root}>
-    <PaginatedCards data={pathContext} />
-  </div>
-)
+}) => {
+  console.log('IndexPage: ', pathContext);
+  return (
+    <div className={classes.root}>
+      <PaginatedCards data={pathContext} />
+    </div>
+  )
+}
 
 export default injectSheet(styles)(IndexPage);

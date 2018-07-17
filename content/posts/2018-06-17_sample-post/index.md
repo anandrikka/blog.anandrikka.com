@@ -5,7 +5,7 @@ status: published
 cover: sample.jpg
 category: "cat2"
 tags: ["tag1", "tag2"]
-identifier: 2_post
+identifier: 5_post
 ---
 
 ## Heading2

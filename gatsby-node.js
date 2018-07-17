@@ -5,20 +5,20 @@ const createPaginatedPages = require('gatsby-paginate');
 const _ = require('lodash');
 const moment = require('moment');
 
-const post_nodes = [];
+const postNodes = [];
 
 const addSiblingNodes = (createNodeField) => {
-  post_nodes.sort(
+  postNodes.sort(
     ({ frontmatter: { created: d1 } }, { frontmatter: { created: d2 } }) =>
       moment(d2, 'YYYY-MM-DD HH:mm') - moment(d1, 'YYYY-MM-DD HH:mm')
   );
-  const totalPosts = post_nodes.length;
+  const totalPosts = postNodes.length;
   for(let i=0; i<totalPosts; i++) {
     const nxtId = (i + 1) < totalPosts ? i + 1 : 0;
     const prevId = (i - 1) > 0 ? i - 1 : totalPosts - 1;
-    const node = post_nodes[i];
-    const nxtNode = post_nodes[nxtId];
-    const prevNode = post_nodes[prevId];
+    const node = postNodes[i];
+    const nxtNode = postNodes[nxtId];
+    const prevNode = postNodes[prevId];
     createNodeField({
       node,
       name: 'next',
@@ -98,7 +98,7 @@ exports.onCreateNode = ({
     })
 
     // add to a list to add prev & next to each post
-    post_nodes.push(node);
+    postNodes.push(node);
   }
 };
 
@@ -194,12 +194,11 @@ exports.createPages = ({
 
     edges.forEach((edge) => {
       const { category, tags:t = [] } = edge.node.frontmatter;
-      const id = edge.node.fields.slug;
       const catId = _.kebabCase(category);
       if (!categories[catId]) {
         categories[catId] = {
           posts: []
-        }
+        } 
       }
       categories[catId].posts.push(edge.node)
       t.forEach((t1) => {

@@ -28,8 +28,8 @@ const styles = theme => ({
     flexWrap: 'wrap',
     alignItems: 'stretch',
     boxSizing: 'border-box',
-    //boxShadow: theme.shadows[1],
-    //backgroundColor: theme.palette.common.white,
+    // boxShadow: theme.shadows[1],
+    // backgroundColor: theme.palette.common.white,
     padding: 20,
     ['@media screen and (max-width: 600px)']: {
       padding: 15
@@ -102,7 +102,7 @@ const PostTemplate = ({ data, classes, history }) => {
           </Typography>
         </header>
         {renderAst(htmlAst)}
-        {/*<div dangerouslySetInnerHTML={{__html: html}} />*/}
+        {/* <div dangerouslySetInnerHTML={{__html: html}} /> */}
       </div>
       <div>
         {
