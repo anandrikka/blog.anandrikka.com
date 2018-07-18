@@ -10,6 +10,7 @@ const renderDisqus = () => {
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://${SHORT_NAME}.disqus.com/embed.js`;
+    script.setAttribute('data-timestamp', +new Date());
     document.getElementsByTagName('head')[0].appendChild(script);
   } else {
     window.DISQUS.reset({ reload: true });
@@ -37,7 +38,6 @@ class DisqusComments extends React.Component {
   render() {
     const { identifier, title, url } = this.props;
     if (process.env.BROWSER) {
-      console.log('Disqus')
       window.disqus_shortname = SHORT_NAME;
       window.disqus_identifier = identifier;
       window.disqus_title = title;

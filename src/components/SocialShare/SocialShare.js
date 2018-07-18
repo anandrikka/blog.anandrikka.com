@@ -14,7 +14,9 @@ import {
   TwitterIcon,
   GooglePlusIcon,
   LinkedinIcon,
-  RedditIcon
+  RedditIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
 } from 'react-share';
 import config from '../../../content/config/metadata';
 
@@ -24,7 +26,7 @@ const styles = theme => ({
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     margin: '15px 0',
     '& div': {
       margin: '5px 5px',
@@ -49,9 +51,11 @@ class SocialShare extends React.Component {
 
   componentDidMount() {
     this.resizeListener = window.addEventListener('resize', () => {
-      let iconSize = 36;
-      if (window.innerWidth > 600) {
+      let iconSize = 24;
+      if (window.innerWidth > 800) {
         iconSize = 48;
+      } else if (window.innerWidth > 480 && window.innerWidth <= 800) {
+        iconSize = 32;
       }
       this.setState({
         iconSize
@@ -77,9 +81,6 @@ class SocialShare extends React.Component {
             {count => <div className="share-count">{filter(count)}</div>}
           </RedditShareCount>
         </RedditShareButton>
-        <TwitterShareButton url={url} title={title}>
-          <TwitterIcon round size={iconSize} />
-        </TwitterShareButton>
         <GooglePlusShareButton url={url}>
           <GooglePlusIcon round size={iconSize} />
           <GooglePlusShareCount url={url}>
@@ -94,7 +95,6 @@ class SocialShare extends React.Component {
         </FacebookShareButton>
         <LinkedinShareButton
           url={url}
-          title={title}
           description={excerpt}
         >
           <LinkedinIcon round size={iconSize} />
@@ -102,6 +102,12 @@ class SocialShare extends React.Component {
             {count => <div className="share-count">{filter(count)}</div>}
           </LinkedinShareCount>
         </LinkedinShareButton>
+        <WhatsappShareButton url={url}>
+          <WhatsappIcon round size={iconSize} />
+        </WhatsappShareButton>
+        <TwitterShareButton url={url}>
+          <TwitterIcon round size={iconSize} />
+        </TwitterShareButton>
       </div>
     )
   }

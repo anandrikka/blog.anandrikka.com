@@ -24,8 +24,8 @@ const renderAst = new rehypeReact({
 const styles = theme => ({
   article: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    // flexWrap: 'wrap',
     alignItems: 'stretch',
     boxSizing: 'border-box',
     // boxShadow: theme.shadows[1],
@@ -123,7 +123,7 @@ const PostTemplate = ({ data, classes, history }) => {
       </div>
       <SocialShare
         node={data.markdownRemark}
-        path={slug}
+        path={`posts/${slug}`}
       />
       <DisqusComments
         identifier={identifier}
