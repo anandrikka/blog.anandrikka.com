@@ -86,6 +86,7 @@ const PostTemplate = ({ data, classes, history }) => {
     tags,
     category
   }
+  console.log('Post: ', identifier, slug, title)
   return (
     <article className={classes.article}>
       <Seo node={seoData} post />

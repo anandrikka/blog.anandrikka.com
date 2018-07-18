@@ -36,7 +36,7 @@ class DisqusComments extends React.Component {
 
   render() {
     const { identifier, title, url } = this.props;
-    if (process.env.BROWSER) {
+    if (window) {
       window.disqus_shortname = SHORT_NAME;
       window.disqus_identifier = identifier;
       window.disqus_title = title;
