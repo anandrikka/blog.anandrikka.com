@@ -1,6 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import Drawer from '@material-ui/core/Drawer';
+import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -22,7 +23,8 @@ import mobileImg from '../../assets/img/mobile_sidebar_img.jpg';
 
 const styles = theme => ({
   drawerPaper: {
-    width: 240
+    width: 240,
+    position: 'relative'
   },
   drawerHeader: {
     display: 'flex',
@@ -34,7 +36,8 @@ const styles = theme => ({
     width: '100%',
     backgroundRepeat: 'repeat',
     backgroundSize: 'contain'
-  }
+  },
+  toolbar: theme.mixins.toolbar
 });
 
 class NavigationDrawer extends React.Component {
@@ -54,12 +57,10 @@ class NavigationDrawer extends React.Component {
           }}
           onClose={menuSwitch}
         >
-          <div className={classes.drawerHeader}>
-            <CardMedia
-              className={classes.media}
-              image={mobileImg}
-              title={"Beginner's Blog"}
-            />
+          <div className={classes.toolbar}>
+            <Typography variant="title">
+              Beginner's Blog
+            </Typography>
           </div>
           <Divider />
           <Menu />

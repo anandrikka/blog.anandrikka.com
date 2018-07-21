@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import injectSheet from 'react-jss';
-
+import Hidden from '@material-ui/core/Hidden'
 import Scrollbar from '../components/common/Scrollbar';
 import AppHeader from '../components/AppHeader';
 import Footer from '../components/Footer';
 import BlogDescription from '../components/BlogDescription';
 import NavigationDrawer from '../components/NavigationDrawer';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import theme from '../styles/theme';
 import 'prismjs/themes/prism-okaidia.css';
@@ -18,13 +19,20 @@ import '../styles/scss/main.scss';
 const brakepoints = theme.breakpoints;
 
 const styles = {
-  container: {
+  appContainer: {
     position: 'relative',
     top: 0,
     left: 0,
     bottom: 0,
     right: 0,
-    overflow: 'hidden',
+    zIndex: 1,
+    overflow: 'hidden'
+  },
+  content: {
+    // padding: theme.spacing.unit * 3,
+    [`${brakepoints.up('md')}`]: {
+      padding: 0
+    }
   },
   pageContent: {
     position: 'relative',
@@ -56,14 +64,15 @@ const styles = {
     }
   },
   routeContent: {
-    margin: '16px',
-    padding: '16px',
+    // margin: '16px',
+    // padding: '16px',
     backgroundColor: theme.palette.common.white,
     // height: 'calc(100% - 64px)'
     // [`${brakepoints.up('md')}`]: {
     //   margin: 24
     // }
-  }
+  },
+  toolbar: theme.mixins.toolbar
 };
 
 const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
@@ -76,20 +85,19 @@ const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
         { name: 'url', content: siteMetadata.url }
       ]}
     />
-    <div className={classes.container}>
+    <div className={classes.appContainer}>
       <AppHeader />
       <NavigationDrawer />
-      <div className={classes.pageContent}>
-        <BlogDescription />
-        <div className={classes.route}>
-          <Scrollbar>
-            <div className={classes.routeContent}>
+      <main className={classes.content}>
+        <Hidden mdUp>
+          <div className={classes.toolbar} />
+          <Scrollbars  style={{ height: 'calc(100vh - 65px)' }}>
+            <div style={{margin: '16px'}}>
               {children()}
             </div>
-          </Scrollbar>
-        </div>
-        <Footer />
-      </div>
+          </Scrollbars>
+        </Hidden>
+      </main>
     </div>
   </MuiThemeProvider>
 )
