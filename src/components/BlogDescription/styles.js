@@ -3,7 +3,7 @@ export default theme => ({
     display: 'none',
     [`${theme.breakpoints.up('md')}`]: {
       background: '#ffffff',
-      width: '240px',
+      // width: '240px',
       // height: '100vh',
       display: 'flex',
       flexDirection: 'column',

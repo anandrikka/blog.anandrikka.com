@@ -1,7 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 
-import Menu from '../Menu';
+import Menu from '../NavMenu';
 
 import profileImg from '../../assets/img/covers/profile.jpeg';
 import metadata from '../../../content/config/metadata';

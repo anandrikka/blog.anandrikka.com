@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import injectSheet from 'react-jss';
+import Grid from '@material-ui/core/Grid';
+import { Scrollbars } from 'react-custom-scrollbars';
 import Hidden from '@material-ui/core/Hidden'
 import Scrollbar from '../components/common/Scrollbar';
 import AppHeader from '../components/AppHeader';
 import Footer from '../components/Footer';
 import BlogDescription from '../components/BlogDescription';
 import NavigationDrawer from '../components/NavigationDrawer';
-import { Scrollbars } from 'react-custom-scrollbars';
 
 import theme from '../styles/theme';
 import 'prismjs/themes/prism-okaidia.css';
@@ -27,6 +28,35 @@ const styles = {
     right: 0,
     zIndex: 1,
     overflow: 'hidden'
+  },
+  mdBelowContent: {
+    minHeight: `calc(100vh - 64px)`,
+    ['@media (max-width:600px)']: {
+      minHeight: `calc(100vh - 56px)`,
+    },
+    ['@media (min-width:0px) and (orientiation: landscape)']: {
+      minHeight: 'calc(100vh - 48px)'
+    }
+  },
+  mdAboveContent: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    flexFlow: 'row wrap',
+    [`${theme.breakpoints.down(theme.breakpoints.values.md)}`]: {
+      display: 'none'
+    },
+    '& .left-block': {
+      width: '300px',
+      position: 'fixed',
+      left: 0,
+      textAlign: 'center',
+      height: '100vh',
+      backgroundColor: theme.palette.common.white
+    },
+    '& .right-block': {
+      minHeight: '100vh'
+    }
   },
   content: {
     // padding: theme.spacing.unit * 3,
@@ -72,7 +102,21 @@ const styles = {
     //   margin: 24
     // }
   },
-  toolbar: theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
+  grid: {
+    [`@media (max-width : ${theme.breakpoints.values.sm - 1}px)`]: {
+      margin: '15px 15px'
+    },
+    [`@media (min-width: ${theme.breakpoints.values.sm}px) and (max-width: ${theme.breakpoints.values.md - 1}px)`]: {
+      margin: '15px 2em'
+    },
+    [`@media (min-width: ${theme.breakpoints.values.md}px) and (max-width: ${theme.breakpoints.values.lg - 1}px)`]: {
+      margin: '15px 3em'
+    },
+    [`@media (min-width: ${theme.breakpoints.values.lg}px)`]: {
+      margin: '15px 10em'
+    }
+  }
 };
 
 const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
@@ -88,15 +132,13 @@ const Layout = ({ classes, children, data: { site: { siteMetadata } } }) => (
     <div className={classes.appContainer}>
       <AppHeader />
       <NavigationDrawer />
-      <main className={classes.content}>
-        <Hidden mdUp>
-          <div className={classes.toolbar} />
-          <Scrollbars  style={{ height: 'calc(100vh - 65px)' }}>
-            <div style={{margin: '16px'}}>
-              {children()}
-            </div>
-          </Scrollbars>
-        </Hidden>
+      <main>
+        <div className={classes.toolbar} />
+        <Scrollbars  className={classes.mdBelowContent}>
+          <div className={classes.grid}>
+            {children()}
+          </div>
+        </Scrollbars>
       </main>
     </div>
   </MuiThemeProvider>

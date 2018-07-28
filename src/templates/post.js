@@ -24,6 +24,7 @@ const renderAst = new rehypeReact({
 const styles = theme => ({
   article: {
     display: 'flex',
+    backgroundColor: theme.palette.common.white,
     flexDirection: 'column',
     // flexWrap: 'wrap',
     alignItems: 'stretch',
