@@ -9,6 +9,7 @@ import 'prismjs/themes/prism-okaidia.css';
 
 import AppHeader from '../components/AppHeader';
 import NavigationDrawer from '../components/NavigationDrawer';
+import Footer from '../components/Footer';
 
 import theme from '../styles/theme';
 import '../styles/scss/main.scss';
@@ -29,6 +30,7 @@ const styles = {
     overflow: 'hidden',
   },
   scrollbars: {
+    display: 'flex',
     minHeight: `calc(100vh - 64px)`,
     ['@media (max-width:600px)']: {
       minHeight: `calc(100vh - 56px)`,
@@ -70,8 +72,11 @@ const Layout = ({classes, children, data: {site: {siteMetadata}}}) => (
       <main>
         <div className={classes.toolbar} />
         <Scrollbars className={classes.scrollbars}>
-          <div className={classes.grid}>
-            {children()}
+          <div>
+            <div className={classes.grid}>
+              {children()}
+            </div>
+            <Footer />
           </div>
         </Scrollbars>
       </main>

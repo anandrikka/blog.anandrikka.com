@@ -1,6 +1,9 @@
 import es6Promise from 'es6-promise';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import favicon from './assets/img/favicon.png';
+
+console.log(favicon)
 
 es6Promise();
 

@@ -17,7 +17,8 @@ const styles = (theme) => ({
   },
   navButtonsContainer: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    width: '100%',
   },
 });
 

@@ -25,7 +25,7 @@ const styles = (theme) => ({
 
 class Tags extends React.Component {
   onTagSelect = (tag) => {  // eslint-disable-line
-    this.props.history.push(`/tags/${_.kebabCase(tag)}`);
+    this.props.history.push(`/tag/${_.kebabCase(tag)}`);
   };
   render() {
     const data = this.props.data.allMarkdownRemark.group;

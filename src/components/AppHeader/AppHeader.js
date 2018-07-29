@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Hidden from '@material-ui/core/Hidden';
 import MenuIcon from '@material-ui/icons/Menu';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import FlagIcon from '@material-ui/icons/Flag';
@@ -14,8 +13,10 @@ import ArchiveIcon from '@material-ui/icons/Archive';
 import SearchIcon from '@material-ui/icons/Search';
 import Avatar from '@material-ui/core/Avatar';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import MenuIconItem from '../MenuIconItem';
+import SearchDialog from '../SearchDialog';
 
 import profileImg from '../../assets/img/covers/profile.jpeg';
 import {toggleMenu} from '../../store';
@@ -69,50 +70,97 @@ const styles = (theme) => ({
 });
 
 class AppHeader extends React.Component {
+  state = {
+    open: false,
+  };
+
+  gotoPage = (url) => {
+    this.props.history.push(`${url}`);
+  }
+
+  handleClose = () => {
+    this.setState({
+      open: false,
+    });
+  }
+
+  openSearch = () => {
+    this.setState({
+      open: true,
+    });
+  }
+
   render() {
     const {classes, toggleMenu} = this.props;
     return (
-      <AppBar
-        position="absolute"
-        classes={{
-          root: classes.root,
-        }}
-        className={classes.appBar}
-      >
-        <Toolbar>
-          <IconButton
-            color="default"
-            className={classes.menu}
-            onClick={toggleMenu}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="title"
-            align="center"
-            classes={{
-              title: classes.title,
-            }}
-            className={classes.title}
-          >
-            Beginner's Blog
-          </Typography>
-          <div className={classes.avatarContainer}>
-            <Avatar
-              alt="AR"
-              src={profileImg}
-              className={`${classes.avatar}`}
-            />
-          </div>
-          <div className={classes.menuItems}>
-            <MenuIconItem Component={BookmarkIcon} />
-            <MenuIconItem Component={FlagIcon} />
-            <MenuIconItem Component={ArchiveIcon} />
-            <MenuIconItem Component={RssIcon} />
-            <MenuIconItem Component={SearchIcon} />
-          </div>
-        </Toolbar>
-      </AppBar>
+      <React.Fragment>
+        <AppBar
+          position="absolute"
+          classes={{
+            root: classes.root,
+          }}
+          className={classes.appBar}
+        >
+          <Toolbar>
+            <IconButton
+              color="default"
+              className={classes.menu}
+              onClick={toggleMenu}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="title"
+              align="center"
+              classes={{
+                title: classes.title,
+              }}
+              className={classes.title}
+            >
+              Beginner's Blog
+            </Typography>
+            <div className={classes.avatarContainer}>
+              <Avatar
+                alt="AR"
+                src={profileImg}
+                className={`${classes.avatar}`}
+              />
+            </div>
+            <div className={classes.menuItems}>
+              <MenuIconItem
+                Component={BookmarkIcon}
+                gotoPage={this.gotoPage}
+                url={'/categories'}
+              />
+              <MenuIconItem
+                Component={FlagIcon}
+                gotoPage={this.gotoPage}
+                url={'/tags'}
+              />
+              <MenuIconItem
+                Component={ArchiveIcon}
+                gotoPage={this.gotoPage}
+                url={'/archives'}
+              />
+              <MenuIconItem
+                Component={RssIcon}
+                openWindow
+              />
+              <IconButton
+                color="default"
+                className={classes.menuItemIcon}
+                onClick={this.openSearch}
+              >
+                <SearchIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        <SearchDialog
+          open={this.state.open}
+          handleClose={this.handleClose}
+        />
+      </React.Fragment>
     );
   }
 }
@@ -120,6 +168,7 @@ class AppHeader extends React.Component {
 AppHeader.propTypes = {
   classes: PropTypes.object.isRequired,
   toggleMenu: PropTypes.func,
+  history: PropTypes.object,
 };
 
 export default connect(
@@ -127,4 +176,4 @@ export default connect(
   (dispatch) => ({
     toggleMenu: () => dispatch(toggleMenu()),
   })
-)(injectSheet(styles)(AppHeader));
+)(withRouter(injectSheet(styles)(AppHeader)));

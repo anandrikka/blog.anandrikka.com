@@ -20,9 +20,6 @@ const styles = (theme) => ({
       position: 'absolute',
       borderTop: `1px solid ${theme.palette.divider}`,
     },
-    [`${theme.breakpoints.up('md')}`]: {
-      display: 'none',
-    },
   },
 });
 

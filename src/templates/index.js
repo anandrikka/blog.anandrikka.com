@@ -23,7 +23,7 @@ const IndexPage = ({
 );
 
 IndexPage.propTypes = {
-  classes: PropTypes,
+  classes: PropTypes.object,
   pathContext: PropTypes.object,
 };
 

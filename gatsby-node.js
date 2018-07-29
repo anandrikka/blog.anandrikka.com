@@ -60,7 +60,7 @@ exports.onCreateNode = ({
     createNodeField({
       node,
       name: 'slug',
-      value: `${date.replace(/\-/g, '/')}${name}`,
+      value: `${date.replace(/\-/g, '/').trim()}${name.trim()}`,
     });
 
     // create id field
@@ -128,7 +128,7 @@ exports.createPages = ({
   return graphql(
     `
       {
-        allMarkdownRemark {
+        allMarkdownRemark(sort:{fields:frontmatter___created, order: DESC}) {
           edges {
             node {
               id
@@ -179,7 +179,7 @@ exports.createPages = ({
       edges,
       createPage,
       pageTemplate: indexPage,
-      pageLength: 3,
+      pageLength: 10,
       context: { },
     });
 
@@ -225,7 +225,7 @@ exports.createPages = ({
         edges: posts,
         createPage,
         pageTemplate: categoryTemplate,
-        pageLength: 1,
+        pageLength: 10,
         pathPrefix: `category/${c}`,
         buildPath: (
           index,
@@ -242,7 +242,7 @@ exports.createPages = ({
         edges: posts,
         createPage,
         pageTemplate: tagTemplate,
-        pageLength: 1,
+        pageLength: 10,
         pathPrefix: `tag/${t}`,
         buildPath: (
           index,

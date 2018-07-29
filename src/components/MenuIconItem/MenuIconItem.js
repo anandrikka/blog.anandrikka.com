@@ -10,9 +10,15 @@ const styles = (theme) => ({
   },
 });
 
-const MenuIconItem = ({Component, classes}) => (
+const MenuIconItem = ({Component, classes, gotoPage, url, openWindow}) => (
   <React.Fragment>
-    <IconButton color="default" className={classes.menuItemIcon}>
+    <IconButton
+      color="default"
+      className={classes.menuItemIcon}
+      onClick={
+        () => !openWindow ? gotoPage(url) : window.open('/rss.xml', '_blank')
+      }
+    >
       <Component />
     </IconButton>
   </React.Fragment>
@@ -21,6 +27,9 @@ const MenuIconItem = ({Component, classes}) => (
 MenuIconItem.propTypes = {
   Component: PropTypes.any,
   classes: PropTypes.object,
+  gotoPage: PropTypes.func,
+  url: PropTypes.string,
+  openWindow: PropTypes.bool,
 };
 
 export default injectSheet(styles)(MenuIconItem);
