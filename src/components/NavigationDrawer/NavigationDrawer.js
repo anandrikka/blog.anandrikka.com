@@ -1,18 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Hidden from '@material-ui/core/Hidden';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import Menu from '../NavMenu';
 
-import { toggleMenu as menuToggle } from "../../store";
+import {toggleMenu as menuToggle} from '../../store';
 
-const styles = theme => ({
+const styles = (theme) => ({
   drawerPaper: {
     width: 240,
-    position: 'relative'
+    position: 'relative',
   },
   drawerHeader: {
     display: 'flex',
@@ -23,24 +23,24 @@ const styles = theme => ({
     minHeight: 150,
     width: '100%',
     backgroundRepeat: 'repeat',
-    backgroundSize: 'contain'
+    backgroundSize: 'contain',
   },
-  toolbar: theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
 });
 
 class NavigationDrawer extends React.Component {
   render() {
-    const { classes, toggleMenu, menuSwitch } = this.props;
+    const {classes, toggleMenu, menuSwitch} = this.props;
     return (
       <Drawer
         variant="temporary"
         anchor="left"
         open={toggleMenu}
         classes={{
-          paper: classes.drawerPaper
+          paper: classes.drawerPaper,
         }}
         ModalProps={{
-          keepMounted: true // Better Mobile Performance
+          keepMounted: true, // Better Mobile Performance
         }}
         onClose={menuSwitch}
       >
@@ -52,14 +52,21 @@ class NavigationDrawer extends React.Component {
         <Divider />
         <Menu />
       </Drawer>
-    )
+    );
   }
 }
+
+NavigationDrawer.propTypes = {
+  classes: PropTypes.object,
+  toggleMenu: PropTypes.bool,
+  menuSwitch: PropTypes.func,
+};
+
 export default connect(
-  state => ({
-    toggleMenu: state.toggleMenu
+  (state) => ({
+    toggleMenu: state.toggleMenu,
   }),
-  dispatch => ({
-    menuSwitch: () => dispatch(menuToggle())
+  (dispatch) => ({
+    menuSwitch: () => dispatch(menuToggle()),
   })
 )(injectSheet(styles)(NavigationDrawer));

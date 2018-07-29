@@ -1,5 +1,6 @@
 import React from 'react';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 import {
   FacebookShareButton,
   GooglePlusShareButton,
@@ -18,9 +19,10 @@ import {
   WhatsappShareButton,
   WhatsappIcon,
 } from 'react-share';
+
 import config from '../../../content/config/metadata';
 
-const styles = theme => ({
+const styles = (theme) => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
@@ -28,24 +30,23 @@ const styles = theme => ({
     alignContent: 'center',
     alignItems: 'flex-start',
     margin: '15px 0',
-    '& div': {
+    ['& div']: {
       margin: '5px 5px',
       [`${theme.breakpoints.up('md')}`]: {
-        margin: '5px 15px'
-      }
+        margin: '5px 15px',
+      },
     },
-    '& .share-count': {
-      textAlign: 'center'
-    }
-  }
+    ['& .share-count']: {
+      textAlign: 'center',
+    },
+  },
 });
 
 class SocialShare extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      iconSize: 36
+      iconSize: 36,
     };
   }
 
@@ -58,7 +59,7 @@ class SocialShare extends React.Component {
         iconSize = 32;
       }
       this.setState({
-        iconSize
+        iconSize,
       });
     });
   }
@@ -68,29 +69,29 @@ class SocialShare extends React.Component {
   }
 
   render() {
-    const { node, path, classes } = this.props;
-    const { iconSize } = this.state;
-    const { frontmatter: { title }, excerpt } = node;
+    const {node, path, classes} = this.props;
+    const {iconSize} = this.state;
+    const {frontmatter: {title}, excerpt} = node;
     const url = `${config.siteMetadata.url}${config.prefixPath}/${path}`;
-    const filter = count => count > 0 ? count : '';
+    const filter = (count) => count > 0 ? count : '';
     return (
       <div className={classes.wrapper}>
         <RedditShareButton url={url} title={title}>
           <RedditIcon round size={iconSize} />
           <RedditShareCount url={url}>
-            {count => <div className="share-count">{filter(count)}</div>}
+            {(count) => <div className="share-count">{filter(count)}</div>}
           </RedditShareCount>
         </RedditShareButton>
         <GooglePlusShareButton url={url}>
           <GooglePlusIcon round size={iconSize} />
           <GooglePlusShareCount url={url}>
-            {count => <div className="share-count">{filter(count)}</div>}
+            {(count) => <div className="share-count">{filter(count)}</div>}
           </GooglePlusShareCount>
         </GooglePlusShareButton>
         <FacebookShareButton url={url} quote={excerpt}>
           <FacebookIcon round size={iconSize} />
           <FacebookShareCount url={url}>
-            {count => <div className="share-count">{filter(count)}</div>}
+            {(count) => <div className="share-count">{filter(count)}</div>}
           </FacebookShareCount>
         </FacebookShareButton>
         <LinkedinShareButton
@@ -99,7 +100,7 @@ class SocialShare extends React.Component {
         >
           <LinkedinIcon round size={iconSize} />
           <LinkedinShareCount url={url}>
-            {count => <div className="share-count">{filter(count)}</div>}
+            {(count) => <div className="share-count">{filter(count)}</div>}
           </LinkedinShareCount>
         </LinkedinShareButton>
         <WhatsappShareButton url={url}>
@@ -109,8 +110,14 @@ class SocialShare extends React.Component {
           <TwitterIcon round size={iconSize} />
         </TwitterShareButton>
       </div>
-    )
+    );
   }
 }
+
+SocialShare.propTypes = {
+  node: PropTypes.object,
+  path: PropTypes.string,
+  classes: PropTypes.object,
+};
 
 export default injectSheet(styles)(SocialShare);

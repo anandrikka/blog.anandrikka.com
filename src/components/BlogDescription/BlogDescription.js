@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
 import Menu from '../NavMenu';
@@ -9,7 +10,7 @@ import styles from './styles';
 
 class Profile extends React.Component {
   render() {
-    const { classes }  = this.props;
+    const {classes} = this.props;
     return (
       <aside className={classes.wrapper}>
         <header>
@@ -21,11 +22,19 @@ class Profile extends React.Component {
             <div className={classes.contact}>
               <ul>
                 {metadata.siteMetadata.social.map((item, index) => (
-                  <li key={`social_${index}`} className="icon"><a className={item.icon} target="_blank" href={item.url}></a></li>
+                  <li
+                    key={`social_${index}`}
+                    className="icon"
+                  >
+                    <a className={item.icon} target="_blank" href={item.url} />
+                  </li>
                 ))}
               </ul>
             </div>
-            <small>I am a web developer focusing on full stack web development. Always hungry to keep learning.</small>
+            <small>
+              I am a web developer focusing on full stack web development.
+              Always hungry to keep learning.
+            </small>
           </div>
         </header>
         <div className={classes.sidebarMenu}>
@@ -37,8 +46,12 @@ class Profile extends React.Component {
           </div>
         </footer>
       </aside>
-    )
+    );
   }
 }
+
+Profile.propTypes = {
+  classes: PropTypes.object,
+};
 
 export default injectSheet(styles)(Profile);

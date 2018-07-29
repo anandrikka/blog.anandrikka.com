@@ -1,53 +1,54 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
-import { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import NavigateNext from '@material-ui/icons/NavigateNext';
 import NavigateBefore from '@material-ui/icons/NavigateBefore';
 
-import NavButton from '../NavButton'
+import NavButton from '../NavButton';
 import PostCard from '../PostCard';
 
-const styles = theme => ({
-	navButtons: {
+const styles = (theme) => ({
+  navButtons: {
     margin: theme.spacing.unit,
-    '&.next': {
-      alignSelf: 'flex-end'
-    }
+    ['&.next']: {
+      alignSelf: 'flex-end',
+    },
   },
   navButtonsContainer: {
     display: 'flex',
-    justifyContent: 'space-between'
-  }
-})
+    justifyContent: 'space-between',
+  },
+});
 
 const PagiantedCards = ({
-	data,
-	classes,
-	history
+  data,
+  classes,
+  history,
 }) => {
-	const { group: nodes, index, pageCount, pathPrefix } = data;
-  const hasPrev = index > 1
-  const hasNext = index < pageCount
-	let prev = ''
-	
-  if ((index-1) !== 1) {
-    prev = `${pathPrefix}/${index-1}`
-	}
-	
-  const next = `${pathPrefix}/${index+1}`
+  const {group: nodes, index, pageCount, pathPrefix} = data;
+  const hasPrev = index > 1;
+  const hasNext = index < pageCount;
+  let prev = '';
+
+  if ((index - 1) !== 1) {
+    prev = `${pathPrefix}/${index-1}`;
+  }
+
+  const next = `${pathPrefix}/${index+1}`;
 
   const gotoPost = (url) => {
-    history.push(`/posts/${url}`)
-  }
+    history.push(`/posts/${url}`);
+  };
 
   const loadPage = (url) => {
-    const prefix = url.substring(0, 1)
+    const prefix = url.substring(0, 1);
     if (prefix === '/') {
-      history.push(url)
+      history.push(url);
     } else {
-      history.push(`/${url}`)
+      history.push(`/${url}`);
     }
-  }
+  };
 
   return (
     <React.Fragment>
@@ -78,8 +79,14 @@ const PagiantedCards = ({
           />
         }
       </div>
-		</React.Fragment>
+    </React.Fragment>
   );
-}
+};
+
+PagiantedCards.propTypes = {
+  classes: PropTypes.object,
+  history: PropTypes.object,
+  data: PropTypes.object,
+};
 
 export default withRouter(injectSheet(styles)(PagiantedCards));

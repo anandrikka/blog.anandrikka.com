@@ -1,4 +1,4 @@
-export default theme => ({
+export default (theme) => ({
   wrapper: {
     display: 'none',
     [`${theme.breakpoints.up('md')}`]: {
@@ -14,8 +14,8 @@ export default theme => ({
       },
       [`${theme.breakpoints.up('xl')}`]: {
         width: '500px',
-      }
-    }
+      },
+    },
   },
   about: {
     textAlign: 'center',
@@ -27,15 +27,15 @@ export default theme => ({
     borderRadius: '100%',
     overflow: 'hidden',
     backgroundColor: '#333030',
-    '& img': {
+    ['& img']: {
       width: '100%',
       height: '100%',
       borderRadius: '50%',
       transition: 'transform 0.35s',
-      '&:hover': {
-        transform: 'scale3d(0.90, 0.90, 1)'
-      }
-    }
+      ['&:hover']: {
+        transform: 'scale3d(0.90, 0.90, 1)',
+      },
+    },
   },
   authorName: {
     // margin: '0 0 10px',
@@ -60,7 +60,7 @@ export default theme => ({
     // }
   },
   contact: {
-    '& .contactTitle': {
+    ['& .contactTitle']: {
       position: 'relative',
       color: '#333030',
       fontWeight: 400,
@@ -68,7 +68,7 @@ export default theme => ({
       margin: '0 0 5px',
       textTransform: 'uppercase',
       textAlign: 'center',
-      '&::before': {
+      ['&::before']: {
         content: '""',
         display: 'block',
         height: '2px',
@@ -77,9 +77,9 @@ export default theme => ({
         position: 'absolute',
         top: '50%',
         left: 0,
-        backgroundColor: '#515151'
+        backgroundColor: '#515151',
       },
-      '&::after': {
+      ['&::after']: {
         content: '""',
         display: 'block',
         height: 2,
@@ -88,21 +88,21 @@ export default theme => ({
         position: 'absolute',
         top: '50%',
         right: 0,
-        backgroundColor: '#515151'
-      }
+        backgroundColor: '#515151',
+      },
     },
-    '& ul': {
+    ['& ul']: {
       margin: 0,
       padding: 0,
       listStyle: 'none',
       textAlign: 'center',
-      '& li': {
+      ['& li']: {
         display: 'inline-block',
         marginLeft: '10px',
-        '&:first-child': {
-          marginLeft: 0
+        ['&:first-child']: {
+          marginLeft: 0,
         },
-        '& a': {
+        ['& a']: {
           borderBottom: '0px solid transparent',
           boxShadow: 'none',
           color: '#515151',
@@ -110,31 +110,31 @@ export default theme => ({
           padding: 5,
           fontSize: 18,
           transition: 'all 350ms cubic-bezier(0.13, 0.43, 0.54, 1.82)',
-          '&:hover': {
+          ['&:hover']: {
             color: '#333030',
-            transform: 'scale(1.2)'
-          }
-        }
-      }
-    }
+            transform: 'scale(1.2)',
+          },
+        },
+      },
+    },
   },
   copyright: {
     fontSize: 14,
     textAlign: 'center',
-    margin: 0
+    margin: 0,
   },
   sidebarMenu: {
-    '& ul': {
+    ['& ul']: {
       verticalAlign: 'top',
       display: 'flex',
       flexDirection: 'column',
       listStyleType: 'none',
-      '& li': {
+      ['& li']: {
         marginBottom: 16,
       },
       // [`${theme.breakpoints.down('lg')}`]: {
       //   marginBottom: 20
       // }
-    }
-  }
+    },
+  },
 });

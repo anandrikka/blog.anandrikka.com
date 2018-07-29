@@ -13,21 +13,21 @@ import RssIcon from '@material-ui/icons/RssFeed';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import SearchIcon from '@material-ui/icons/Search';
 import Avatar from '@material-ui/core/Avatar';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import MenuIconItem from '../MenuIconItem';
 
 import profileImg from '../../assets/img/covers/profile.jpeg';
-import { toggleMenu } from '../../store';
+import {toggleMenu} from '../../store';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     boxShadow: 'none',
     // display: 'flex',
-    background: '#ffffff'
+    background: '#ffffff',
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
   },
   menu: {
     marginLeft: -12,
@@ -39,25 +39,25 @@ const styles = theme => ({
       lineHeight: '56px',
     },
     ['@media (min-width:0px) and (orientiation: landscape)']: {
-      lineHeight: '48px'
-    }
+      lineHeight: '48px',
+    },
   },
   avatarContainer: {
     position: 'absolute',
     [`${theme.breakpoints.down('md')}`]: {
-      right: 0
+      right: 0,
     },
     [`${theme.breakpoints.up('md')}`]: {
-      left: 0
-    }
+      left: 0,
+    },
   },
   menuItems: {
     position: 'absolute',
     right: 0,
     display: 'none',
     [`${theme.breakpoints.up('md')}`]: {
-      display: 'flex'
-    }
+      display: 'flex',
+    },
   },
   menuItemIcon: {
     marginLeft: -12,
@@ -65,12 +65,12 @@ const styles = theme => ({
   },
   avatar: {
     margin: 10,
-  }
+  },
 });
 
 class AppHeader extends React.Component {
   render() {
-    const { classes, toggleMenu } = this.props;
+    const {classes, toggleMenu} = this.props;
     return (
       <AppBar
         position="absolute"
@@ -80,14 +80,18 @@ class AppHeader extends React.Component {
         className={classes.appBar}
       >
         <Toolbar>
-          <IconButton color="default" aria-label="Menu" className={classes.menu} onClick={toggleMenu}>
+          <IconButton
+            color="default"
+            className={classes.menu}
+            onClick={toggleMenu}
+          >
             <MenuIcon />
           </IconButton>
           <Typography
             variant="title"
             align="center"
             classes={{
-              title: classes.title
+              title: classes.title,
             }}
             className={classes.title}
           >
@@ -109,17 +113,18 @@ class AppHeader extends React.Component {
           </div>
         </Toolbar>
       </AppBar>
-    )
+    );
   }
 }
 
 AppHeader.propTypes = {
   classes: PropTypes.object.isRequired,
+  toggleMenu: PropTypes.func,
 };
 
 export default connect(
   null,
-  dispatch => ({
-    toggleMenu: () => dispatch(toggleMenu())
+  (dispatch) => ({
+    toggleMenu: () => dispatch(toggleMenu()),
   })
 )(injectSheet(styles)(AppHeader));

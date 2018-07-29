@@ -3,38 +3,31 @@ import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import CardHeader from '@material-ui/core/CardHeader';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import rehypeReact from 'rehype-react';
 import moment from 'moment';
 
 import SocialShare from '../components/SocialShare';
 import DisqusComments from '../components/Disqus';
 import Seo from '../components/Seo';
-// import AppLink from '../components/Link';
 
-const renderAst = new rehypeReact({
+const renderAst = new rehypeReact({ //eslint-disable-line
   createElement: React.createElement,
   components: {
     // 'app-link': AppLink
-  }
+  },
 }).Compiler;
 
-const styles = theme => ({
+const styles = (theme) => ({
   article: {
     display: 'flex',
     backgroundColor: theme.palette.common.white,
     flexDirection: 'column',
-    // flexWrap: 'wrap',
     alignItems: 'stretch',
     boxSizing: 'border-box',
-    // boxShadow: theme.shadows[1],
-    // backgroundColor: theme.palette.common.white,
     padding: 20,
     ['@media screen and (max-width: 600px)']: {
-      padding: 15
-    }
+      padding: 15,
+    },
   },
   pageContent: {
 
@@ -44,17 +37,17 @@ const styles = theme => ({
   },
   secondaryTitle: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   subheader: {
-    fontSize: '0.75rem'
-  }
+    fontSize: '0.75rem',
+  },
 });
 
-const PostTemplate = ({ data, classes, history }) => {
+const PostTemplate = ({data, classes, history}) => {
   const onTagSelect = (url) => {
     history.push(url);
-  }
+  };
   const {
     markdownRemark: {
       excerpt,
@@ -65,17 +58,17 @@ const PostTemplate = ({ data, classes, history }) => {
         created,
         identifier,
         cover: {
-          publicURL
+          publicURL,
         },
         description,
         tags,
-        category
+        category,
       },
       fields: {
         slug,
         tagPaths,
-        categoryPath
-      }
+        categoryPath,
+      },
     },
   } = data;
   const seoData = {
@@ -85,9 +78,11 @@ const PostTemplate = ({ data, classes, history }) => {
     excerpt,
     description,
     tags,
-    category
-  }
-  console.log('Post: ', identifier, slug, title)
+    category,
+  };
+  const formattedDate = moment(created, 'YYYY-MM-DD HH:mm')
+    .format('Do MMMM YYYY');
+  const timeToReadArticle = `${timeToRead} min`;
   return (
     <article className={classes.article}>
       <Seo node={seoData} post />
@@ -97,10 +92,14 @@ const PostTemplate = ({ data, classes, history }) => {
             {title}
           </Typography>
           <Typography variant="caption" align="center" gutterBottom>
-            {moment(created, 'YYYY-MM-DD HH:mm').format('Do MMMM YYYY')} - {`${timeToRead} min Read`}
+            {formattedDate} - {timeToReadArticle}
           </Typography>
           <Typography variant="caption" align="center">
-            <i className="fa fa-bookmark" style={{padding: '0 10px'}}></i>{categoryPath.name}
+            <i
+              className="fa fa-bookmark"
+              style={{padding: '0 10px'}}
+            />
+            {categoryPath.name}
           </Typography>
         </header>
         {renderAst(htmlAst)}
@@ -134,7 +133,7 @@ const PostTemplate = ({ data, classes, history }) => {
       />
     </article>
   );
-}
+};
 
 PostTemplate.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -146,17 +145,19 @@ PostTemplate.propTypes = {
       }),
       timeToRead: PropTypes.number,
       frontmatter: PropTypes.shape({
-        title: PropTypes.string
-      })
-    })
-  })
+        title: PropTypes.string,
+      }),
+    }),
+  }),
+  history: PropTypes.object,
 };
 
 export default injectSheet(styles)(PostTemplate);
 
+/* eslint-disable */
 export const postQuery = graphql`
   query PostByPath($slug: String!) {
-		markdownRemark(fields: { slug: { eq: $slug } }) {
+	  markdownRemark(fields: { slug: { eq: $slug } }) {
       excerpt
 			htmlAst
 			wordCount {

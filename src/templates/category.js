@@ -4,29 +4,27 @@ import PropTypes from 'prop-types';
 
 import PaginatedCards from '../components/PaginatedCards';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'stretch'
-  }
+    alignItems: 'stretch',
+  },
 });
 
 const CategoryTemplate = ({
   pathContext,
-  classes
-}) => {
-  console.log('pathContext: ', pathContext);
-  return (
-    <div className={classes.root}>
-      <PaginatedCards data={pathContext} />
-    </div>
-  )
-}
+  classes,
+}) => (
+  <div className={classes.root}>
+    <PaginatedCards data={pathContext} />
+  </div>
+);
 
 CategoryTemplate.propTypes = {
-  pageResources: PropTypes.object
-}
+  pathContext: PropTypes.any,
+  classes: PropTypes.object,
+};
 
 export default injectSheet(styles)(CategoryTemplate);

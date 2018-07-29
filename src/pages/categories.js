@@ -1,27 +1,30 @@
 import React from 'react';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import Typography from '@material-ui/core/Typography';
 
 import SearchInput from '../components/SearchInput';
 
-const styles = theme => ({
+const styles = (theme) => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'stretch'
+    alignItems: 'stretch',
   },
   display1: {
     fontSize: '1rem',
-    fontFamily: 'Montserrat'
-  }
+    fontFamily: 'Montserrat',
+  },
 });
 
 class Categories extends React.Component {
   render() {
     const data = this.props.data.allMarkdownRemark.group;
-    const { classes } = this.props;
+    const {classes} = this.props;
+    const dateCreated = moment(post.created, 'YYYY-MM-DD HH: mm')
+      .format('D MMMM YYYY');
     return (
       <div className={classes.wrapper}>
         <SearchInput
@@ -30,19 +33,19 @@ class Categories extends React.Component {
         <div>
           {
             data.map((category, i) => {
-              const posts = category.edges.map(edge => {
-                const frontmatter =  edge.node.frontmatter;
+              const posts = category.edges.map((edge) => {
+                const frontmatter = edge.node.frontmatter;
                 return {
                   ...frontmatter,
                 };
-              })
+              });
               return (
                 <div key={`category_${category.name}`}>
                   <Typography
                     variant="title"
                     component="p"
                     classes={{
-                      display1: classes.display1
+                      display1: classes.display1,
                     }}
                   >
                     {category.name} ({posts.length})
@@ -55,24 +58,29 @@ class Categories extends React.Component {
                             variant="display1"
                             component="p"
                             classes={{
-                              display1: classes.display1
+                              display1: classes.display1,
                             }}
                           >
-                            {post.title} - {moment(post.created, 'YYYY-MM-DD HH: mm').format('D MMMM YYYY')}
+                            {post.title} - {dateCreated}
                           </Typography>
                         </li>
                       ))
                     }
                   </ol>
                 </div>
-              )
+              );
             })
           }
         </div>
       </div>
-    )
+    );
   }
 }
+
+Categories.propTypes = {
+  data: PropTypes.object,
+  classes: PropTypes.object,
+};
 
 export default injectSheet(styles)(Categories);
 
@@ -93,4 +101,4 @@ export const categories = graphql`
       }
     }
   }
-`
+`;

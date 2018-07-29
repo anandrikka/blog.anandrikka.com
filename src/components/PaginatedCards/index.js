@@ -1,1 +1,1 @@
-export { default } from './PaginatedCards';
+export {default} from './PaginatedCards';

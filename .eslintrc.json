@@ -8,13 +8,18 @@
       "experimentalObjectRestSpread": true
     }
   },
-  "extends": ["google", "prettier"],
+  "extends": ["google"],
+  "parser": "babel-eslint",
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
+    "no-invalid-this": "off",
+    "no-unused-vars": 0,
     "linebreak-style": "off",
     "no-console": 1,
+    "require-jsdoc": 0,
+    "react/jsx-uses-vars": 0,
     "react/prefer-stateless-function": "off",
-    "react/prop-types": "off",
+    "react/prop-types": 1,
     "react/no-danger": "off",
     "jsx-a11y/anchor-is-valid": [ "error", {
       "components": [ "Link" ],

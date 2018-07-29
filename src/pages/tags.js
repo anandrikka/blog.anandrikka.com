@@ -1,21 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import moment from 'moment';
-import { uniq } from 'lodash';
+import {uniq} from 'lodash';
 
 import SearchInput from '../components/SearchInput';
 
-const styles = theme => ({
+const styles = (theme) => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   display1: {
     fontSize: '1rem',
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat',
   },
   button: {
     margin: theme.spacing.unit,
@@ -23,13 +24,13 @@ const styles = theme => ({
 });
 
 class Tags extends React.Component {
-  onTagSelect = (tag) => {
-    this.props.history.push(`/tags/${_.kebabCase(tag)}`)
-  }
+  onTagSelect = (tag) => {  // eslint-disable-line
+    this.props.history.push(`/tags/${_.kebabCase(tag)}`);
+  };
   render() {
     const data = this.props.data.allMarkdownRemark.group;
-    const { classes } = this.props;
-    const tags = uniq(data.map(tag => tag.name.toLowerCase()))
+    const {classes} = this.props;
+    const tags = uniq(data.map((tag) => tag.name.toLowerCase()));
     return (
       <div className={classes.wrapper}>
         <SearchInput
@@ -54,19 +55,19 @@ class Tags extends React.Component {
           </div>
           {
             data.map((tag, i) => {
-              const posts = tag.edges.map(edge => {
-                const frontmatter =  edge.node.frontmatter;
+              const posts = tag.edges.map((edge) => {
+                const frontmatter = edge.node.frontmatter;
                 return {
                   ...frontmatter,
                 };
-              })
+              });
               return (
                 <div key={`tag_${tag.name}`}>
                   <Typography
                     variant="title"
                     component="p"
                     classes={{
-                      display1: classes.display1
+                      display1: classes.display1,
                     }}
                   >
                     {tag.name} ({posts.length})
@@ -79,24 +80,32 @@ class Tags extends React.Component {
                             variant="display1"
                             component="p"
                             classes={{
-                              display1: classes.display1
+                              display1: classes.display1,
                             }}
                           >
-                            {post.title} - {moment(post.created, 'YYYY-MM-DD HH: mm').format('D MMMM YYYY')}
+                            {post.title} -
+                              {moment(post.created, 'YYYY-MM-DD HH: mm')
+                                .format('D MMMM YYYY')}
                           </Typography>
                         </li>
                       ))
                     }
                   </ol>
                 </div>
-              )
+              );
             })
           }
         </div>
       </div>
-    )
+    );
   }
 }
+
+Tags.propTypes = {
+  classes: PropTypes.object,
+  history: PropTypes.object,
+  data: PropTypes.object,
+};
 
 export default injectSheet(styles)(Tags);
 
@@ -116,4 +125,4 @@ export const tags = graphql`
       }
     }
   }
-`
+`;

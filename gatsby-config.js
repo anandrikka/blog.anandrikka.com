@@ -4,8 +4,6 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-// const regexExcludeRobots = /^(?!\/(dev-404-page|404|offline-plugin-app-shell-fallback|tags|categories)).*$/
-
 module.exports = {
   siteMetadata: {
     ...config.siteMetadata,
@@ -13,8 +11,8 @@ module.exports = {
       site_url: config.siteMetadata.url + config.prefixPath,
       feed_url: config.siteMetadata.url + config.prefixPath + '/rss.xml',
       title: config.siteMetadata.title,
-      description: config.siteMetadata.description
-    }
+      description: config.siteMetadata.description,
+    },
   },
   plugins: [
     'gatsby-plugin-sass',
@@ -23,15 +21,15 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/posts/`,
-        name: 'posts'
-      }
+        name: 'posts',
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/pages/`,
-        name: 'pages'
-      }
+        name: 'pages',
+      },
     },
     // {
     //   resolve: 'gatsby-source-filesystem',
@@ -44,8 +42,8 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/assets/`,
-        name: 'images'
-      }
+        name: 'images',
+      },
     },
     {
       resolve: 'gatsby-transformer-remark',
@@ -56,47 +54,48 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1200,
-              backgroundColor: 'transparent'
-            }
+              backgroundColor: 'transparent',
+            },
           },
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
               classPrefix: 'language-',
               inlineCodeMarker: null,
-              aliases: {}
-            }
+              aliases: {},
+            },
           },
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {
-              wrapperStyle: 'margin-bottom: 2em'
-            }
+              wrapperStyle: 'margin-bottom: 2em',
+            },
           },
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           'gatsby-plugin-sharp',
-          // 'gatsby-remark-autolink-headers', // Provides autolink for all the headers
-        ]
-      }
+          // Provides autolink for all the headers
+          // 'gatsby-remark-autolink-headers',
+        ],
+      },
     },
     {
-      resolve: "gatsby-plugin-nprogress",
+      resolve: 'gatsby-plugin-nprogress',
       options: {
-        color: "#c62828"
-      }
+        color: '#c62828',
+      },
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-catch-links',
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: process.env.GATSBY_GA_TRACKING_ID
-      }
+        trackingId: process.env.GATSBY_GA_TRACKING_ID,
+      },
     },
     {
-      resolve: 'gatsby-plugin-sitemap'
+      resolve: 'gatsby-plugin-sitemap',
       // options: {
       //   output: '/sitemap.xml',
       //   query: `
@@ -144,8 +143,8 @@ module.exports = {
         feeds: [
           {
             serialize(ctx) {
-              const { rssMetadata } = ctx.query.site.siteMetadata;
-              return ctx.query.allMarkdownRemark.edges.map(edge => ({
+              const {rssMetadata} = ctx.query.site.siteMetadata;
+              return ctx.query.allMarkdownRemark.edges.map((edge) => ({
                 categories: edge.node.frontmatter.tags,
                 date: edge.node.frontmatter.created,
                 title: edge.node.frontmatter.title,
@@ -153,12 +152,15 @@ module.exports = {
                 author: rssMetadata.author,
                 url: rssMetadata.site_url + edge.node.fields.slug,
                 guid: rssMetadata.site_url + edge.node.fields.slug,
-                custom_elements: [{ "content:encoded": edge.node.html }]
+                custom_elements: [{'content:encoded': edge.node.html}],
               }));
-            } ,
+            },
             query: `
              {
-              allMarkdownRemark(limit: 1000, sort:{ order: DESC, fields: [frontmatter___created]} ) {
+              allMarkdownRemark(
+                limit: 1000,
+                sort:{ order: DESC, fields: [frontmatter___created]}
+              ) {
                 edges {
                   node {
                     excerpt
@@ -180,10 +182,10 @@ module.exports = {
               } 
              }
             `,
-            output: '/rss.xml'
-          }
-        ]
-      }
-    }
+            output: '/rss.xml',
+          },
+        ],
+      },
+    },
   ],
 };

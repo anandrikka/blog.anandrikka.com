@@ -57,9 +57,12 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "lint:js": "eslint --ext .js,.jsx ."
+    "lint:js": "eslint --ext .js,.jsx .",
+    "lint:watch": "esw -w",
+    "develop:watch": "npm run develop && npm run lint:watch"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.6",
     "babel-plugin-dynamic-import-webpack": "^1.0.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "cli-glob": "^0.1.0",
@@ -67,9 +70,11 @@
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-loader": "^2.1.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "eslint-watch": "^4.0.2",
     "prettier": "^1.13.7",
     "remark-cli": "^5.0.0",
     "remark-preset-lint-recommended": "^3.0.2",

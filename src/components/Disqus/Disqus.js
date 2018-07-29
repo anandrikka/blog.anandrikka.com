@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import config from '../../../content/config/metadata';
 
-const SHORT_NAME = config.disqusShortname
-const WEBSITE_URL = config.siteMetadata.url
+const SHORT_NAME = config.disqusShortname;
+const WEBSITE_URL = config.siteMetadata.url;
 
 const renderDisqus = () => {
   if (!window.DISQUS) {
@@ -13,9 +13,9 @@ const renderDisqus = () => {
     script.setAttribute('data-timestamp', +new Date());
     document.getElementsByTagName('head')[0].appendChild(script);
   } else {
-    window.DISQUS.reset({ reload: true });
+    window.DISQUS.reset({reload: true});
   }
-}
+};
 
 class DisqusComments extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -32,11 +32,11 @@ class DisqusComments extends React.Component {
   }
 
   componentDidUpdate() {
-    renderDisqus()
+    renderDisqus();
   }
 
   render() {
-    const { identifier, title, url } = this.props;
+    const {identifier, title, url} = this.props;
     if (process.env.BROWSER) {
       window.disqus_shortname = SHORT_NAME;
       window.disqus_identifier = identifier;
@@ -45,15 +45,15 @@ class DisqusComments extends React.Component {
     }
     return (
       <div id="disqus_thread" />
-    )
+    );
   }
-
 }
 
 DisqusComments.propTypes = {
   title: PropTypes.string,
   identifier: PropTypes.string,
   url: PropTypes.string,
-}
+  id: PropTypes.string,
+};
 
 export default DisqusComments;

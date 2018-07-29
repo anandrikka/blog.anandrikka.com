@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -6,7 +7,7 @@ import Img from 'gatsby-image';
 
 import PostCardContent from './PostCardConent';
 
-const styles = theme => ({
+const styles = (theme) => ({
   post: {
     width: '100%',
     maxWidth: '100%',
@@ -18,13 +19,13 @@ const styles = theme => ({
     borderRadius: '10px',
     overflow: 'hidden',
     transition: 'all 0.3s ease',
-    '&:hover': {
+    ['&:hover']: {
       transform: 'translate(0px, -2px)',
-      boxShadow: '0 15px 30px -10px rgba(10, 16, 34, .2)'
+      boxShadow: '0 15px 30px -10px rgba(10, 16, 34, .2)',
     },
     ['@media only screen and (max-width: 600px)']: {
-      flexDirection: 'column'
-    }
+      flexDirection: 'column',
+    },
   },
   postThumbnail: {
     maxWidth: '100%',
@@ -33,8 +34,8 @@ const styles = theme => ({
     backgroundPosition: '50%, 50%',
     backgroundRepeat: 'no-repeat',
     ['@media only screen and (max-width: 600px)']: {
-      width: '100%'
-    }
+      width: '100%',
+    },
   },
   thumbnailOuterWrapper: {
     width: '30%',
@@ -42,35 +43,41 @@ const styles = theme => ({
     maxHeight: '11em',
     flexGrow: 1,
     ['@media only screen and (max-width: 600px)']: {
-      width: '100%'
-    }
+      width: '100%',
+    },
   },
   thumbnailInnerWrapper: {
-    position: 'static !important'
+    position: 'static !important',
   },
 });
 
-const PostCard = ({ classes, postData, gotoPost }) => (
-	<Card
-		elevation={1}
-		classes={{
-			root: classes.post
-		}}
-		onClick={() => gotoPost(postData.fields.slug)}
-	>
-		<Img
-			sizes={postData.frontmatter.cover.childImageSharp.sizes}
-			className={classes.thumbnailInnerWrapper}
-			outerWrapperClassName={classes.thumbnailOuterWrapper}
-		/>
-		<CardContent
-			classes={{
-				root: classes.postContent
-			}}
-		>
-			<PostCardContent post={postData} />
-		</CardContent>
-	</Card>
-)
+const PostCard = ({classes, postData, gotoPost}) => (
+  <Card
+    elevation={1}
+    classes={{
+      root: classes.post,
+    }}
+    onClick={() => gotoPost(postData.fields.slug)}
+  >
+    <Img
+      sizes={postData.frontmatter.cover.childImageSharp.sizes}
+      className={classes.thumbnailInnerWrapper}
+      outerWrapperClassName={classes.thumbnailOuterWrapper}
+    />
+    <CardContent
+      classes={{
+        root: classes.postContent,
+      }}
+    >
+      <PostCardContent post={postData} />
+    </CardContent>
+  </Card>
+);
+
+PostCard.propTypes = {
+  classes: PropTypes.object,
+  postData: PropTypes.object,
+  gotoPost: PropTypes.func,
+};
 
 export default injectSheet(styles)(PostCard);
