@@ -23,8 +23,6 @@ class Categories extends React.Component {
   render() {
     const data = this.props.data.allMarkdownRemark.group;
     const {classes} = this.props;
-    const dateCreated = moment(post.created, 'YYYY-MM-DD HH: mm')
-      .format('D MMMM YYYY');
     return (
       <div className={classes.wrapper}>
         <SearchInput
@@ -61,7 +59,10 @@ class Categories extends React.Component {
                               display1: classes.display1,
                             }}
                           >
-                            {post.title} - {dateCreated}
+                            {post.title} - {
+                              moment(post.created, 'YYYY-MM-DD HH: mm')
+                                .format('D MMMM YYYY')
+                            }
                           </Typography>
                         </li>
                       ))
