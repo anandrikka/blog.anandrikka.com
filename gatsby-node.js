@@ -7,6 +7,12 @@ const moment = require('moment');
 
 const postNodes = [];
 
+function titleCase(str) {
+  return str.toLowerCase().split(' ').map(function(word) {
+    return (word.charAt(0).toUpperCase() + word.slice(1));
+  }).join(' ');
+}
+
 const addSiblingNodes = (createNodeField) => {
   postNodes.sort(
     ({frontmatter: {created: d1}}, {frontmatter: {created: d2}}) =>
@@ -200,7 +206,7 @@ exports.createPages = ({
 
     edges.forEach((edge) => {
       const {category, tags: t = []} = edge.node.frontmatter;
-      const catId = _.kebabCase(category);
+      const catId = _.kebabCase(titleCase(category));
       if (!categories[catId]) {
         categories[catId] = {
           posts: [],

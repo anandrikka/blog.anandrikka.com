@@ -4,7 +4,7 @@ import injectSheet from 'react-jss';
 
 import Menu from '../NavMenu';
 
-import profileImg from '../../assets/img/covers/profile.jpeg';
+import profileImg from '../../assets/img/profile.jpeg';
 import metadata from '../../../content/config/metadata';
 import styles from './styles';
 

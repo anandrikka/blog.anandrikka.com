@@ -5,7 +5,7 @@ status: published
 cover: ../../assets/covers/web_server.png
 category: "Tomcat"
 tags: ["share files", "tomcat", "web server"]
-identifier: _02
+identifier: post_41
 ---
 Sharing files with friends or colleagues who are in same network is every easy now. All you need is tomcat and name of your computer. So let's see how we can do it.
 

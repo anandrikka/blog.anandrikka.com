@@ -59,7 +59,7 @@ const Seo = ({node, post: isPost}) => {
 
 Seo.propTypes = {
   node: PropTypes.object,
-  post: PropTypes.object,
+  post: PropTypes.bool,
 };
 
 export default Seo;

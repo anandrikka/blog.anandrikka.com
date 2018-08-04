@@ -18,7 +18,7 @@ import {withRouter} from 'react-router-dom';
 import MenuIconItem from '../MenuIconItem';
 import SearchDialog from '../SearchDialog';
 
-import profileImg from '../../assets/img/covers/profile.jpeg';
+import profileImg from '../../assets/img/profile.jpeg';
 import {toggleMenu} from '../../store';
 
 const styles = (theme) => ({

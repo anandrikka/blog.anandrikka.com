@@ -5,7 +5,7 @@ status: published
 cover: ../../assets/covers/git.png
 category: "Git"
 tags: ["git", "version control"]
-identifier: _01
+identifier: post_39
 ---
 Few days back me along with my colleagues came up with an idea to do POC on healthcare mobile app using ionic. I thought of creating a common code repository in one of our systems and share that code repository using office LAN. A part from pull and push commands in git I didn't know anything. So obviously like any other developer I googled, after lot of research I successfully created a Git repository in our LAN. Here are the steps
 
