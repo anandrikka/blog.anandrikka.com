@@ -28,6 +28,7 @@ const styles = (theme) => ({
     ['@media screen and (max-width: 600px)']: {
       padding: 15,
     },
+    wordBreak: 'break-word',
   },
   pageContent: {
 

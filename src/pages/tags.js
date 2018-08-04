@@ -13,6 +13,7 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    wordBreak: 'break-word',
   },
   display1: {
     fontSize: '1rem',
