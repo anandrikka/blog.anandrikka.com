@@ -1,5 +1,5 @@
 ---
-title: AngularJs: Revisiting createInjector
+title: AngularJs Revisiting createInjector
 created: 2015-09-05 23:32
 cover: ../../assets/covers//angular1.png
 status: published

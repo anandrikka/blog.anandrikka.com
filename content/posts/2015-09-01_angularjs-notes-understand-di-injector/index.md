@@ -1,5 +1,5 @@
 ---
-title: AngularJs: Understand DI & $injector
+title: AngularJs Understand DI & $injector
 created: 2015-09-01 01:49
 cover: ../../assets/covers//angular1.png
 status: published

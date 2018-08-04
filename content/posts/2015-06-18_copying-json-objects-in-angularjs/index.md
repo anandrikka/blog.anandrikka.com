@@ -1,5 +1,5 @@
 ---
-title: AngularJs: Copying JSON objects
+title: AngularJs Copying JSON objects
 created: 2015-06-18 00:46
 cover: ../../assets/covers//angular1.png
 status: published
