@@ -11,6 +11,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SocialShare from '../components/SocialShare';
 import DisqusComments from '../components/Disqus';
 import Seo from '../components/Seo';
+import PostLinks from '../components/PostLinks';
 
 const renderAst = new rehypeReact({ //eslint-disable-line
   createElement: React.createElement,
@@ -130,30 +131,10 @@ const PostTemplate = ({data, classes, history}) => {
         node={data.markdownRemark}
         path={`posts/${slug}`}
       />
-      { prev && (
-          <Button
-            variant="outlined"
-            color="secondary"
-            className={classes.button}
-            onClick={() => goto(prev.url)}
-          >
-            <KeyboardArrowLeft />
-            {prev.title}
-          </Button>
-        )
-      }
-      { next && (
-          <Button
-            variant="outlined"
-            color="secondary"
-            className={classes.button}
-            onClick={() => goto(next.url)}
-          >
-            {next.title}
-            <KeyboardArrowRight />
-          </Button>
-        )
-      }
+      <PostLinks
+        prev={prev}
+        next={next}
+      />
       <DisqusComments
         identifier={identifier}
         title={title}
@@ -215,11 +196,13 @@ export const postQuery = graphql`
         }
         next {
           title
-          slug
+          slug,
+          url
         }
         prev {
           title
-          slug
+          slug,
+          url
         }
       }
 		}
