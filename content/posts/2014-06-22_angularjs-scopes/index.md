@@ -7,9 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_10
 ---
-
-# AngularJs Scopes
-
 Scopes are one of the core functionality in AngularJs. Scopes serve as a glue between controllers(for now say model) and view. Just before our application renders view to the user, scope links to the view and application sets up DOM(Document Object Model) to notify the angular for property changes. Scopes uses prototypical inheritance to get the value. Please click here to know the difference b/w [classical inheritance and prototypical inheritance](http://aaditmshah.github.io/why-prototypal-inheritance-matters/#constructors_vs_prototypes). Prototypical inheritance in simple words is nothing but searching for the value from present scope to top level scope. What Scopes can Do ?
 
   * They provide observers to watch for model changes.

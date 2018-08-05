@@ -7,8 +7,6 @@ category: Angularjs
 tags: ["angularjs"]
 identifier: post_6
 ---
-# AngularJs DataBinding
-
 Angular implements two way data binding. Data Binding is a process that links UI and business logic, changes done to either of them will reflect in both. Two-way data binding refers to the ability to bind changes to an object’s properties to changes in the UI, and vice-versa. How do we achieve data binding in AngularJs ? We use **ng-model** to bind the variable to scope and we use double curly braces **{{ }} or ng-bind** to see the variable value. Whenever we use ng-model to a variable it will be binded to the scope. This scope for the variable will be available in UI as well as model. So changes done in UI will be reflected in model and changes done in model will be reflected in UI.  Lets see an example using {{ }}
 
 ```html

@@ -7,9 +7,6 @@ category: java
 tags: ["java", "java void"]
 identifier: post_19
 ---
-
-# Java's Void ('V' capital)
-
 Yesterday when I was searching for something related to ProgressBar came across something called "Void". I know about "void" which we use as a return type of method but I have never heard of "Void". So what is this "Void" ? when it is used ? Let's have a look into it. "Void" was there in java since JDK1.1. There are 8 predefined objects to represent eight primitive types and one more object to represent primitive type "void('v' small)". These objects can only be accessed via  public static final variables like INTEGER.TYPE, BOOLEAN.TYPE, VOID.TYPE etc.. Please see the Void.java
 
 ```java

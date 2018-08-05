@@ -7,9 +7,6 @@ category: java
 tags: ["java", "swings"]
 identifier: post_20
 ---
-
-# SwingUtilites - invokeAndWait() and invokeLater()
-
 In Java after swing components displayed on the screen they should be operated by only one thread called "Event Handling Thread or Event Thread". We have an another alternative to make changes to Swing components. We can write our code in a separate block and can give this block reference to Event thread.
 
 The SwingUtilitiesclass has a static **invokeAndWait()** and **invokeLater()** method available to use to put references to blocks of code onto the event queue

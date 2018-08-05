@@ -7,10 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_33
 ---
-
-
-# AngularJs: Revisiting createInjector
-
 In the previous posts we have seen how DI is achieved using $provider and $injector. In this post we go further details of how exactly dependencies are injected into angular. It all starts when module gets loaded. It calls createInjector method with parameter modules to load. createInjector(modulestoLoad) returns an object called $injector with following methods instantiate, get, has, invoke and annotate. we have gone through details in [previous post](https://techanand.wordpress.com/2015/09/01/angularjs-notes-understand-di-injector/). Let's see what exactly each method does in real. 
 
   1. Annotate: Angular must know which dependencies needs to be loaded, annotate will take care of this. It will return an array of dependencies that needs to be injected. Refer below image for more details.![Annotate implemenation](https://techanand.files.wordpress.com/2015/09/annotate.jpg)

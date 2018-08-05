@@ -1,5 +1,5 @@
 ---
-title: AngularJs# Sequential execution of promises !!
+title: AngularJs Sequential execution of promises !!
 created: 2015-07-04 02:16
 cover: ../../assets/covers//angular1.png
 status: published
@@ -7,9 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_23
 ---
-
-# AngularJs: Sequential execution of promises !!
-
 Promise is an asynchronous call. When __$q.all__ called on array of promises, we can't guarantee that they execute in a sequence. However there will be situations where you would be forced to execute promises in a sequence. There are a lot of ways to do it, my first thought is **chaining promises** and is the only thought. I know how to chain promises & implement them sequentially, but there are questions bugging me 
 
   1. Am I need to repeat code each time when I need to implement promises in sequence ?

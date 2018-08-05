@@ -7,9 +7,6 @@ category: Mobile
 tags: ["Angular", "Ionic"]
 identifier: post_38
 ---
-
-# Gradle Error: Ionic build for android
-
 I'm learning Ionic framework to develop hybrid apps. However when I'm trying to build the application encountered "gradle" errors. If you encountered any of these errors follow below instructions
 
   1. Download gradle distribution from [here](http://services.gradle.org/distributions).

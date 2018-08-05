@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_25
 ---
-# Traverse through JSON to find and replace a value
-
 This small code snippet helps you to traverse through JSON Object and replace a particular value.
 
 ```javascript

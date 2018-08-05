@@ -7,9 +7,6 @@ category: Mobile
 tags: ["Ionic", "Android"]
 identifier: post_37
 ---
-
-# Start with Ionic
-
 Ionic is a open source framework which is used to build Android and IOS apps  with "HTML 5, CSS & JavaScript". Ionic helps you to write applications which can be used either in Android/IOS. Ionic along with "Apache cordova" provides support to build hybrid apps. Ionic is completely built based on "AngularJs". So If you know angular, you know Ionic _**How to start ?**_ 1\. Install Nodejs (node pakage manager) & GitHub (source control) 2\. Install Java, Android sdk & apache-ant & configure your environmental variables 
 
 **%PATH%;%JAVA_HOME%\bin;C:\Users\nandu\AppData\Roaming\npm;C:\apache-ant-1.9.6\bin;C:\Users\nandu\AppData\Local\Android\sdk;C:\Users\nandu\AppData\Local\Android\sdk\build-tools\23.0.1**

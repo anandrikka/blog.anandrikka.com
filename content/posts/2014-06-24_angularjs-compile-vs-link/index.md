@@ -7,9 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_12
 ---
-
-# AngularJs Compile Vs Link
-
 There are lot of technical stuff looping aroung Link and Compile of Angular Directive. In simple terms **Compile** is used to do DOM manipulations without any scope where as if DOM Manipulations require scope then we use **Link**. Example using Compile
 
 ```html

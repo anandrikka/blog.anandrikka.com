@@ -1,5 +1,5 @@
 ---
-title: AngularJs# Formatters & Parsers
+title: AngularJs Formatters & Parsers
 created: 2015-07-26 00:08
 cover: ../../assets/covers//angular1.png
 status: published
@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_28
 ---
-# AngularJs: Formatters & Parsers
-
 Have you ever faced a situation where you doesn't want to change your underlying model, but change how that model is viewed or when you want something changed in your view, should add some behaviour to underlying model. For Example I have a JSON object from the server which needs to be binded to few labels in the view or when I type small letters in the view, but model should reflect CAPTIAL letters. Don't worry AngularJs provides **$formatters and $parsers** which will handle these kind of scenarios. **1\. What are formatters & parsers ?** Formatters and parsers are array of functions that can be implemented on view and model. They are only available in ng-model directive, so if we want to use them, we need to pass ngModel as require in our custom directives. Know more about ngModel from [here](https://docs.angularjs.org/api/ng/type/ngModel.NgModelController) **2\. How they are defined inside directive ?**
 
 ```javascript

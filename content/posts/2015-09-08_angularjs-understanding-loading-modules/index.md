@@ -7,9 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_36
 ---
-
-# AngularJs: Understanding Loading modules
-
 Banging my head for 2 days gave me some insight into how AngularJs loads modules. In the previous posts I have been talking about $injector, $provider, DI, createInjector bla bla bla.. All the information I have shared researching online material gave me bits and pieces of information but not a complete picture. Then I have decided to go through source code, with the knowledge gained from previous research I was able to understand how it's achieved. This post is going to be a bit longer. concepts like $injector, $provider, DI are touched in this post, which are covered in detail in my previous posts. _*Click on images to open in new tab for reading explanation for the code._ _So let's begin the show_ :) When we write a simple angular program -  There are lot many questions that might be araising in our head 
 
   1. When was core ng-module loaded

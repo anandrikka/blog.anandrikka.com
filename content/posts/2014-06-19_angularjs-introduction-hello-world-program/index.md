@@ -7,7 +7,6 @@ category: "Angular"
 tags: ["Angular"]
 identifier: "post_5"
 ---
-# AngularJs Introduction & Hello World Program
 
 AngularJs is an open source framework maintained by Google. This is client side framework and was entirely developed in JavaScript. It comes with following features inbuilt data-binding, basic template directives, form validation, routing, deep linking, dependency injection, unit testing, end-to-end testing  and mock testing. **What you must know before jumping into AngularJs ?** We must have some !dea on below topics 
 

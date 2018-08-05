@@ -7,9 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_35
 ---
-
-# AngularJs: Loading modules
-
 Loading modules is the most important step. Let's see how it's done !! 
 
 ```javascript

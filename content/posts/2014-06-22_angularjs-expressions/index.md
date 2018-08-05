@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_8
 ---
-# AngularJs Expressions
-
 Expression in simple terms is nothing but evaluation of variables to single value. In AngularJs we evaluate expressions using {{ }}. For example expression __{{ 1+ 2}}__ is evaluated to '3'.  In JavaScript we use **eval()** function to evaluate expressions but using eval for evaluating expressions arises security concerns. Here is the example for eval.
 
 ```html

@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_15
 ---
-# AngularJs Services
-
 Services are generally used to write methods that fetch or modify databases. Can't we use controllers for the same ? Yes we can use controllers to define logic but there are some limitations. Controllers are initiated only when they are needed and discarded when they are not required. So whenever we switch the route or reload the page old scope will be discarded and new scope will be generated. This is not acceptable in production envinorment. In order to overcome this situation angular provides us **Services** we have already used services a lot. Services provide a way to keep data for lifetime of the app and communicates across controllers in consistent manner. Services are singleton objects means they are only created once and they are lazy loaded tooo !! means only intantiated when needed. What are the different ways to create services  ? Angular provides five ways to define our own services based on requirement. Let's see them with examples. All services takes two parameters 'service name' and object which is nothing but what service must do...
 
 **factory:** It simply returns an object whatever we want to define on this service needs to be done as properties on this object, so when we use this factory in a controller or directive they are accessable via this object Example for factory

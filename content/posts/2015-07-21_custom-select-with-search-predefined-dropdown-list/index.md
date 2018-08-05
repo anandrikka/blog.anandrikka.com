@@ -1,5 +1,5 @@
 ---
-title: AngularJs# Custom Select with search & predefined dropdown list
+title: AngularJs Custom Select with search & predefined dropdown list
 created: 2015-07-21 01:25
 cover: ../../assets/covers//angular1.png
 status: published
@@ -7,9 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_27
 ---
-
-# AngularJs: Custom Select with search & predefined dropdown list
-
 Directives are the most powerful concept in AngularJs. We can almost do anything using our custom directives. Today I came across a requirement where I need a predefined dropdown with search option, where search needs to bring list from server.I'm using [bootstrap-ui dropdown](https://angular-ui.github.io/bootstrap/) directives to get more features for the custom directive. This directive can be further stream-lined for more specific usages. **selectDemo.html**
 
 ```html

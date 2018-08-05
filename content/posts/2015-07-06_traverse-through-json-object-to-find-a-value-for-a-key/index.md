@@ -7,9 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_24
 ---
-
-# Traverse Through JSON object to find a value for a key
-
 Finding value assigned to a JSON key is often used in lot of applications. This ready to use code snippet will help you to traverse through JSON object and find value for a key. In case there is no key found it will return null.
 
 ```javascript

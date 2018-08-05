@@ -8,9 +8,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_9
 ---
-
-# AngularJs Filters
-
 Filters provide a way to modify data before presenting it to user. Filters can be used in view templates, controllers or services. Angular out of box provides lowercase, uppercase, currency, number, date, json, limitTo, orderBy filters Let's see an example:
 
 ```html

@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_14
 ---
-# AngularJs Routing
-
 Routing is nothing but redirecting from one page to another page. In any web application routing is very important. AngularJs is a Single Page Application which never reloads once app is loaded. In this case How we acheive routing ? We can navigate from one template to another using Directive Templates, but it is not best practice to do it like that instead we brakeout the view into layout and template views and we show template views based in URL. Routing is not included in the angular.js file, we have download **ngRoute** dependency from [angular website](https://angularjs.org) and add it to our project. **ng-view** is a special directive included in **ngRoute.** It is used as a placeholder for $route view content. This directive can specify exactly where is DOM template rendered by current $route can be placed. __$routeProvider__ is the provider service that is used to configure routes in the config section of the app. $routeProvider provides two important methods on it. They are **when and otherwise.**
 
 **when** takes two parameters as input they are path and route.

@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_11
 ---
-# AngularJs Directives
-
 Directives are markers on a DOM element (such as an attribute, element name, comment or CSS class) that tell AngularJS's HTML compiler to attach a specified behavior to that DOM element or even transform the DOM element and its children. We have already seen directives like ng-model, ng-controller, ng-bind etc.. Angular app starts with ng-app which is designed to be used as only attribute. We can also define our own custom directives and add behaviour to them. Built in directives are prefixed with "ng-" or "data-ng-" so we must not use "ng-" as prefix. All directives within our app will have **$rootScope**. Compiling directives on html is nothing but compiling the java script behind the scenes. We use **module.directive** to define our own directive. It takes two parameters **String - **directive name and** function - **which returns object(explains how directive must behave). Let's see an example
 
 ```html

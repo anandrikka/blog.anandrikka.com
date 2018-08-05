@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_22
 ---
-# AngularJs: Auto Dropdown based on another select element
-
 Ever got requirement of auto opening dropdown based on another dropdown. This directive in angularjs will help you to do that.
 
 ```html

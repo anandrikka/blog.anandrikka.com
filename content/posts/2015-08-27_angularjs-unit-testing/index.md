@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_31
 ---
-# Note on Jasmine Framework !!
-
 Jasmine is a very good, easily configurable unit testing framework for AngularJs. A simple test includes following pattern
 
 ```javascript

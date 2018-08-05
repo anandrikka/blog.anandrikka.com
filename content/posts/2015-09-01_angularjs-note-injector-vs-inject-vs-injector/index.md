@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_29
 ---
-# AngularJs Note: $injector Vs $inject Vs Injector()
-
 Following are the key differences:
 
 __injector__: Used to invoke or get dependencies into variables

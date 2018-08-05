@@ -7,9 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_32
 ---
-
-# AngularJs: $provider
-
 In the [previous post](https://techanand.wordpress.com/2015/09/01/angularjs-notes-understand-di-injector/) we have seen how $injector is used for Dependency Injection. In this post we will see the role of $provider in DI. Basically $provider is a service, which is used to register components with $injector. How services are created in AngularJs ? 
 
   1. An Angular service is a singleton object created by a service factory.

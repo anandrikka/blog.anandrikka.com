@@ -7,8 +7,6 @@ category: Angular
 tags: ["Angular"]
 identifier: post_13
 ---
-# AngularJs Isolated Scopes
-
 To have a solid understanding of isolated scopes we must understand how scope works in AngularJs. we can pass data to directives using scope variables, but this has so many compilcations for example if we want to use directive some other place it has to be defined in only controller in order to pass scope variables moreover we can even change the scope variables whenever we want this is force us to change the directive definition. In order to aviod these complications AngularJs has **Isolated Scopes.** Isolated scopes are completely separate from the current scope of the DOM. In order to set the properties on scope object we need to pass the data via attributes, So what are the ways we have to pass data through attributes ? We have three ways of passing data to attributes. For that we are going to use "**scope**" property of Directive. There is a point to notice what ever the value that we need to send to directive is set as an attribute in the DOM and these attributes must be defined on scopes with camelCase names Example: "myUrl" defined on isolated scope will be used as "my-url" attribute on DOM. All the properties defiend in the scope are accessible all across the directive and this scope will be local to directive i.e each time we use a directive new scope will be created for that directive.  There are three types of isolated scopes we are going to use in directive definition **"@"**: attributes are provided as a result of evaluated expression as a String. We use '@' as follows in the directive 
 
 scope:{
