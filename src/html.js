@@ -2,7 +2,7 @@
 import es6Promise from 'es6-promise';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import favicon from './assets/img/favicon.png';
+import favicon from '../static/files/img/favicon.png';
 
 es6Promise();
 
@@ -41,12 +41,9 @@ class HTML extends Component {
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link href={favicon} rel="shortcut icon" type="image/png" />
           {headComponents}
           {css}
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-status-bar-style" content="#D0E0D8" />
-          <meta name="apple-mobile-web-app-title" content="Lazywill" />
-          <link href="/img/favicon.png" rel="icon" />
         </head>
         <body {bodyAttributes}>
           <noscript>You need to enable JavaScript to run this app!</noscript>

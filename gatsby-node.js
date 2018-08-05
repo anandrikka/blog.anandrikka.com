@@ -31,6 +31,7 @@ const addSiblingNodes = (createNodeField) => {
       value: i === totalPosts-1 ? null: {
         title: nxtNode.frontmatter.title,
         slug: nxtNode.fields.slug,
+        url: `/posts/${nxtNode.fields.slug}`,
       },
     });
     createNodeField({
@@ -39,6 +40,7 @@ const addSiblingNodes = (createNodeField) => {
       value: i ===0 ? null : {
         title: prevNode.frontmatter.title,
         slug: prevNode.fields.slug,
+        url: `/posts/${prevNode.fields.slug}`,
       },
     });
   }

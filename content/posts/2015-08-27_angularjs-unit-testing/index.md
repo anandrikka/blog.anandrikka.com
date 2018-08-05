@@ -9,7 +9,22 @@ identifier: post_31
 ---
 # Note on Jasmine Framework !!
 
-Jasmine is a very good, easily configurable unit testing framework for AngularJs. A simple test includes following pattern [code language="html"] //test starts with describe and takes two parameters - name & function describe('calculator', function () { //includes conditions that need to fulfilled before each test, takes single function parameter beforeEach(function(){ }); //inlcudes conditions that need to fulfilled after each test, takes single function parameter afterEach(function(){ }) //it - used to implement test scenarios, there can any number of it's in a describe it('test name', function(){ matchers }) }); [/code] Matchers include 
+Jasmine is a very good, easily configurable unit testing framework for AngularJs. A simple test includes following pattern
+
+```javascript
+//test starts with describe and takes two parameters - name & function describe('calculator',
+function() { //includes conditions that need to fulfilled before each test, takes
+  single
+  function parameter beforeEach(function() {}); //inlcudes conditions that need
+  to fulfilled after each test, takes single
+  function parameter afterEach(function() {}) //it - used to implement test scenarios, there can any number of it's in a describe
+  it('test name', function() {
+    matchers
+  })
+});
+```
+
+Matchers include
 
   * toBe: represents the exact equality (===) operator.
   * toEqual: represents the regular equality (==) operator.
@@ -23,4 +38,5 @@ Jasmine is a very good, easily configurable unit testing framework for AngularJs
   * toBeLessThan/toBeGreaterThan: for numerical comparisons.
   * toBeCloseTo: for floating point comparisons.
   * toThrow: for catching expected exceptions
+
 A part from that we have spy's which can be used to fake the data, we can use spyOn to spy on functions in a test. [Click here to know more about Jasmine](http://jasmine.github.io/2.0/introduction.html)

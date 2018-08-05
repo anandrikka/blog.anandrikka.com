@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import rehypeReact from 'rehype-react';
 import moment from 'moment';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import SocialShare from '../components/SocialShare';
 import DisqusComments from '../components/Disqus';
@@ -46,7 +48,7 @@ const styles = (theme) => ({
 });
 
 const PostTemplate = ({data, classes, history}) => {
-  const onTagSelect = (url) => {
+  const goto = (url) => {
     history.push(url);
   };
   const {
@@ -69,6 +71,8 @@ const PostTemplate = ({data, classes, history}) => {
         slug,
         tagPaths,
         categoryPath,
+        prev,
+        next,
       },
     },
   } = data;
@@ -114,7 +118,7 @@ const PostTemplate = ({data, classes, history}) => {
               size="small"
               color="secondary"
               className={classes.button}
-              onClick={() => onTagSelect(tag.path)}
+              onClick={() => goto(tag.path)}
               key={`tag_${index}`}
             >
               {`#${tag.name}`}
@@ -126,6 +130,30 @@ const PostTemplate = ({data, classes, history}) => {
         node={data.markdownRemark}
         path={`posts/${slug}`}
       />
+      { prev && (
+          <Button
+            variant="outlined"
+            color="secondary"
+            className={classes.button}
+            onClick={() => goto(prev.url)}
+          >
+            <KeyboardArrowLeft />
+            {prev.title}
+          </Button>
+        )
+      }
+      { next && (
+          <Button
+            variant="outlined"
+            color="secondary"
+            className={classes.button}
+            onClick={() => goto(next.url)}
+          >
+            {next.title}
+            <KeyboardArrowRight />
+          </Button>
+        )
+      }
       <DisqusComments
         identifier={identifier}
         title={title}
@@ -184,6 +212,14 @@ export const postQuery = graphql`
         categoryPath {
           name
           path
+        }
+        next {
+          title
+          slug
+        }
+        prev {
+          title
+          slug
         }
       }
 		}

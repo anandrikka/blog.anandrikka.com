@@ -17,4 +17,106 @@ myUrl:'@'
 
 }
 
-this means we are going to get the property of "myUrl" defined on the directive from html attribute "my-url". The input to myUrl will be  the output of the evaluated expression of my-url. For example we define "my-url=message". myUrl will be taking {{message}}. Let's see an example [sourcecode language="html"] <html> <head lang="en"> <meta charset="UTF-8"> <title></title> <script src="../05-Routing/lib/angular.js"></script> <script> var app = angular.module("app", []); app.controller("MyController", function($scope){ $scope.message="from scope"; }); app.directive("attrScope", function(){ return { template:'<div>{{message}}</div>' // this is similar to what we done in scope property below, but we used link function /*,link:function(scope, element, attrs){ scope.message=attrs.message; }*/ // this will create a variable called 'message' in scope // and read attribute called scope form html and evaluate it as String ,scope:{ message:'@' } } }); </script> </head> <body ng-app="app"> <div ng-controller="MyController"> <input type="text" ng-model="message"/> <div attr-scope message="{{message}}"></div> </div> </body> </html> [/sourcecode] In the above example evaluated expression result "{{message}}" is passed as a String to directive and it can be made availabe on scope as explained above. The output will be whatever we type in the input field will be displayed through our directive. This is a one way binding i.e only message from HTML will be mapped to Directive and the same message property from directive cannot be mapped back to HTML because we are not passing any object through our attribute it is just a string. If not understood see the example below [sourcecode language="html"] <html> <head lang="en"> <meta charset="UTF-8"> <title></title> <script src="../05-Routing/lib/angular.js"></script> <script> var app = angular.module("app", []); app.controller("MyController", function($scope){ $scope.message="from scope"; }); app.directive("attrScope", function(){ return { template:'<div>' + 'From Directive:' + '<br/>' + '<input type="text" ng-model="message"/></div>' ,scope:{ message:'@' } } }); </script> </head> <body ng-app="app"> <div ng-controller="MyController"> From DOM:<br/> <input type="text" ng-model="message"/><br/> <div attr-scope message="{{message}}"></div> </div> </body> </html> [/sourcecode] In the above example when we type something from DOM. It will be reflected in the directive template via "message" attribute through scope "message" defined on the directive but the reverse cannot be done because using "@" will bind data in only one direction. This can be useful in some cases but the most basic concept of AngularJs "two way data binding" is not achieved through "@" so in order to overcome this we have something called "**=**" **"=": **Using "@" will not achieve two way databinding in order to acheive we pass the attributes to scope of directive as an object using =. Only difference b/w @ and = is @ passes String = passes Object. In the above example replace '@' with '=' and '{{message}}' with simply 'message'. Result we will observe two way databinding. **"&": **In order to pass data from directives to methods on controller we use "&". For example calling a method on controller using our own directive. Let's see an example [sourcecode language="html"] <html> <head lang="en"> <meta charset="UTF-8"> <title></title> <script src="../05-Routing/lib/angular.js"></script> <script> var app = angular.module("app", []); app.controller("MyController", function($scope){ $scope.alertMessage = function(message){ alert(message); } }); app.directive("attrScope", function(){ return { template:'<div> ' + '<input type="text" ng-model="demoMessage"/>' + '<input type="button" ng-click="demo({message:demoMessage})">Click Me</input>' + '</div>' ,scope:{ demo:'&' } } }); </script> </head> <body ng-app="app"> <div ng-controller="MyController"> <div attr-scope demo="alertMessage(message)"></div> </div> </body> </html> [/sourcecode] In order to pass data from directive to controller I will use {task:task} left hand 'task' is the property that is defined on html and right hand 'task' is the property that need to be passed from directive to html. I am calling **alertMessage** defined on controller using "demo" directive and we get "message" from directive via {message:demoMessage}.
+this means we are going to get the property of "myUrl" defined on the directive from html attribute "my-url". The input to myUrl will be  the output of the evaluated expression of my-url. For example we define "my-url=message". myUrl will be taking {{message}}. Let's see an example
+
+```html
+<html>
+  <head lang="en">
+    <meta charset="UTF-8"> <title></title>
+    <script src="../05-Routing/lib/angular.js">
+    </script>
+    <script>
+      var app = angular.module("app", []);
+      app.controller("MyController", function($scope) {
+        $scope.message = "from scope";
+      });
+      app.directive("attrScope", function() {
+        return {
+          template: '<div>{{message}}</div>', // this is similar to what we done in scope property below, but we used link function,
+          link: function(scope, element, attrs) {
+            scope.message = attrs.message;
+          }, // this will create a variable called 'message' in scope // and read attribute called scope form html and evaluate it as String
+          scope: {
+            message: '@'
+          }
+        }
+      });
+    </script>
+  </head>
+  <body ng-app="app">
+    <div ng-controller="MyController"> <input type="text" ng-model="message" /> <div
+        attr-scope message="{{message}}"></div>
+    </div>
+  </body>
+</html>
+```
+
+In the above example evaluated expression result "{{message}}" is passed as a String to directive and it can be made availabe on scope as explained above. The output will be whatever we type in the input field will be displayed through our directive. This is a one way binding i.e only message from HTML will be mapped to Directive and the same message property from directive cannot be mapped back to HTML because we are not passing any object through our attribute it is just a string. If not understood see the example below
+
+```html
+<html>
+  <head lang="en">
+    <meta charset="UTF-8"> <title></title>
+    <script src="../05-Routing/lib/angular.js">
+    </script>
+    <script>
+      var app = angular.module("app", []);
+      app.controller("MyController", function($scope) {
+        $scope.message = "from scope";
+      });
+      app.directive("attrScope", function() {
+        return {
+          template: '<div>' + 'From Directive:' + '<br/>' +
+            '<input type="text" ng-model="message"/></div>',
+          scope: {
+            message: '@'
+          }
+        }
+      });
+    </script>
+  </head>
+  <body ng-app="app">
+    <div ng-controller="MyController"> From DOM:<br/> <input type="text" ng-model="message" />
+        <br/>
+          <div attr-scope message="{{message}}"></div>
+    </div>
+  </body>
+</html>
+```
+
+In the above example when we type something from DOM. It will be reflected in the directive template via "message" attribute through scope "message" defined on the directive but the reverse cannot be done because using "@" will bind data in only one direction. This can be useful in some cases but the most basic concept of AngularJs "two way data binding" is not achieved through "@" so in order to overcome this we have something called "__=__" __"=":__ Using "@" will not achieve two way databinding in order to acheive we pass the attributes to scope of directive as an object using =. Only difference b/w @ and = is @ passes String = passes Object. In the above example replace '@' with '=' and '{{message}}' with simply 'message'. Result we will observe two way databinding. __"&":__ In order to pass data from directives to methods on controller we use "&". For example calling a method on controller using our own directive. Let's see an example
+
+```html
+<html>
+  <head lang="en">
+    <meta charset="UTF-8"> <title></title>
+    <script src="../05-Routing/lib/angular.js">
+    </script>
+    <script>
+      var app = angular.module("app", []);
+      app.controller("MyController", function($scope) {
+        $scope.alertMessage = function(message) {
+          alert(message);
+        }
+      });
+      app.directive("attrScope", function() {
+        return {
+          template: '<div> ' + '<input type="text" ng-model="demoMessage"/>' +
+            '<input type="button" ng-click="demo({message:demoMessage})">Click Me</input>' +
+            '</div>',
+          scope: {
+            demo: '&'
+          }
+        }
+      });
+    </script>
+  </head>
+  <body ng-app="app">
+    <div ng-controller="MyController">
+      <div attr-scope demo="alertMessage(message)"></div>
+    </div>
+  </body>
+</html>
+```
+
+In order to pass data from directive to controller I will use {task:task} left hand 'task' is the property that is defined on html and right hand 'task' is the property that need to be passed from directive to html. I am calling **alertMessage** defined on controller using "demo" directive and we get "message" from directive via {message:demoMessage}.

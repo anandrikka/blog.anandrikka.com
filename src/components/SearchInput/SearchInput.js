@@ -10,7 +10,7 @@ const styles = (theme) => ({
       color: theme.typography.headline.color,
       lineHeight: '3rem',
       fontSize: '1.5rem',
-      width: '100%',
+      // width: '100%',
       padding: '10px',
       background: '0 0',
       border: 'none',
